@@ -36,7 +36,7 @@ export function uwufyWord(word: string): string {
 
 export function uwufySentence(sentence: string): string {
   // Wepwace nyowmaw question mawks and excwamations with mowe 'expwessive' chawactews
-  sentence = sentence.replace(new RegExp('[?!]*$'), getElement(exclimations));
+  sentence = sentence.replace(new RegExp('[?!]+$'), getElement(exclimations));
 
   // Spwit the sentence into wowds
   const words = sentence.split(` `);
@@ -44,8 +44,9 @@ export function uwufySentence(sentence: string): string {
 
   // If the wowd is a UWW just attach it to the nyew stwing without uwufying
   let uwufied = ``;
+
   words.forEach((word) => {
-    word = word.replace(new RegExp('[?!]*'), getElement(exclimations));
+    word = word.replace(new RegExp(/[?!]+/), getElement(exclimations));
     uwufied += ` ${pattern.test(word) ? word : uwufyWord(word)}`;
   });
 
