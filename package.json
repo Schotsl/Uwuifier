@@ -1,8 +1,9 @@
 {
   "name": "uwufier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package wiww uwufy any sentence ow wowd and expowts a few vewy handy functions if youw into uwufying",
   "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Schotsl/uwufier.git"
@@ -13,19 +14,28 @@
     "url": "https://github.com/Schotsl/uwufier/issues"
   },
   "homepage": "https://github.com/Schotsl/uwufier#readme",
+  "keywords": ["uwu", "UwU", "UWU", "owo", "OwO", "OWO", "anime", "Anime", "kawaii", "Kawaii"],
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.3.0",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
+    "ts-jest": "^25.3.1",
     "tslint": "^6.1.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
+    "test": "jest --config jestconfig.json",
+    "lint": "tslint -p tsconfig.json",
     "serve": "nodemon",
     "build": "tsc && node dist/index.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm run lint & npm run format & npm run build & npm test"
   },
+  "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+  "lint": "tslint -p tsconfig.json",
   "nodemonConfig": {
     "ignore": [
       ".git",
@@ -36,7 +46,5 @@
     ],
     "exec": "npm run lint & npm run format & npm run build",
     "ext": "ts"
-  },
-  "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-  "lint": "tslint -p tsconfig.json"
+  }
 }
