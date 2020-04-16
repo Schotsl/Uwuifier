@@ -4,6 +4,9 @@
   "description": "This package wiww uwufy any sentence ow wowd and expowts a few vewy handy functions if youw into uwufying",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Schotsl/uwufier.git"
