@@ -1,7 +1,7 @@
 {
-  "name": "uwufier",
+  "name": "uwuifier",
   "version": "1.1.0",
-  "description": "This package wiww uwufy any sentence ow wowd and expowts a few vewy handy functions if youw into uwufying",
+  "description": "This very lightweight package allows you to uwuify any sentence or word (excluding URL's) with many configurable parameters while giving you access to many vewy kawaii sentences and faces",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "files": [
