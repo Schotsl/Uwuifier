@@ -17,7 +17,18 @@
     "url": "https://github.com/Schotsl/uwufier/issues"
   },
   "homepage": "https://github.com/Schotsl/uwufier#readme",
-  "keywords": ["uwu", "UwU", "UWU", "owo", "OwO", "OWO", "anime", "Anime", "kawaii", "Kawaii"],
+  "keywords": [
+    "uwu",
+    "UwU",
+    "UWU",
+    "owo",
+    "OwO",
+    "OWO",
+    "anime",
+    "Anime",
+    "kawaii",
+    "Kawaii"
+  ],
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^25.3.0",
@@ -34,8 +45,8 @@
     "serve": "nodemon",
     "build": "tsc && node dist/index.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm run lint & npm run format & npm run build & npm test"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint & npm run format & npm run build & npm test"
   },
   "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
   "lint": "tslint -p tsconfig.json",
