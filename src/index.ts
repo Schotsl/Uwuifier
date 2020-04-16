@@ -46,7 +46,6 @@ export function uwufySentence(sentence: string): string {
   let uwufied = ``;
 
   words.forEach((word) => {
-    word = word.replace(new RegExp(/[?!]+/), getElement(exclimations));
     uwufied += ` ${pattern.test(word) ? word : uwufyWord(word)}`;
   });
 
