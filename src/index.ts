@@ -9,7 +9,7 @@ const actions = [
   `*runs away*`,
   `*huggles tightly*`,
   `*boops your nose*`,
-  `*starts twerking*`,
+  `*starts twerking*`
 ];
 const exclimations = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
