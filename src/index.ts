@@ -23,18 +23,17 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function uwufyWord(word: string): string {
+export function uwuifyWord(word: string): string {
   word = word.replace(/(?:r|l)/g, `w`);
   word = word.replace(/(?:R|L)/g, `W`);
   word = word.replace(/n([aeiou])/g, `ny$1`);
   word = word.replace(/N([aeiou])/g, `Ny$1`);
   word = word.replace(/N([AEIOU])/g, `Ny$1`);
   word = word.replace(/ove/g, `uv`);
-
   return word;
 }
 
-export function uwufySentence(sentence: string): string {
+export function uwuifySentence(sentence: string): string {
   // Wepwace nyowmaw question mawks and excwamations with mowe 'expwessive' chawactews
   sentence = sentence.replace(new RegExp('[?!]+$'), getElement(exclimations));
 
@@ -43,36 +42,36 @@ export function uwufySentence(sentence: string): string {
   const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
   // If the wowd is a UWW just attach it to the nyew stwing without uwufying
-  let uwufied = ``;
+  let uwuified = ``;
 
   words.forEach((normalWord) => {
     const isUrl = pattern.test(normalWord);
-    const isUwuified = normalWord !== uwufyWord(normalWord);
+    const isUwuified = normalWord !== uwuifyWord(normalWord);
 
-    let uwufiedWord = isUrl ? normalWord : uwufyWord(normalWord);
+    let uwuifiedWord = isUrl ? normalWord : uwuifyWord(normalWord);
 
     const random = Math.random();
 
     // 5% chance of getting a random face
     if (random <= 0.05) {
-      uwufied += ` ${getElement(faces)}`;
+      uwuified += ` ${getElement(faces)}`;
     // 5% chance of a getting a random action
     } else if (random <= 0.10) {
-      uwufied += ` ${getElement(actions)}`;
+      uwuified += ` ${getElement(actions)}`;
     // 10% chance of stutter if the word hasn't been uwufied before for readability
     } else if (random <= 0.20 && !isUwuified && !isUrl) {
       const letter = normalWord[0];
       const stutter = getRandomInt(0, 2);
 
       for (let i = 0; i < stutter; i ++) {
-        uwufiedWord = `${letter}-${uwufiedWord}`;
+        uwuifiedWord = `${letter}-${uwuifiedWord}`;
       }
     }
 
-    uwufied += ` ${uwufiedWord}`;
+    uwuified += ` ${uwuifiedWord}`;
   });
 
-  return uwufied;
+  return uwuified;
 }
 
 // Get a wandom uwu face

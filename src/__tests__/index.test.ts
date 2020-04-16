@@ -1,4 +1,4 @@
-import { uwufyWord, uwufySentence, uwuFace } from '../index';
+import { uwuifyWord, uwuifySentence, uwuFace } from '../index';
 
 const senteces = [
   'I had to get a tetanus vaccine when i stabbed my foot by accident',
@@ -26,7 +26,7 @@ console.log(`Please take a look if these senteces like uwuified:`)
 
 test(`Uwufy a word`, () => {
   const normalWord = getElement(words);
-  const uwuifiedWord = uwufyWord(normalWord);
+  const uwuifiedWord = uwuifyWord(normalWord);
   
   console.log(`\nUwuified word 📘: ${uwuifiedWord}`);
 
@@ -36,7 +36,7 @@ test(`Uwufy a word`, () => {
 
 test('Uwufy a sentence', () => {
   const normalSentence = getElement(senteces);
-  const uwufiedSentence = uwufySentence(normalSentence);
+  const uwufiedSentence = uwuifySentence(normalSentence);
 
   console.log(`\nUwuified sentence 📔: ${uwufiedSentence}`)
 
