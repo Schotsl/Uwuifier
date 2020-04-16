@@ -34,14 +34,14 @@ export function uwuifyWord(word: string): string {
 }
 
 export function uwuifySentence(sentence: string): string {
-  // Wepwace nyowmaw question mawks and excwamations with mowe 'expwessive' chawactews
+  // Replace normal question marks and exclamations with more 'expressive' characters
   sentence = sentence.replace(new RegExp('[?!]+$'), getElement(exclimations));
 
   // Spwit the sentence into wowds
   const words = sentence.split(` `);
   const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
-  // If the wowd is a UWW just attach it to the nyew stwing without uwufying
+  // If the word is a URL just attach it to the new string without uwuifying
   let uwuified = ``;
 
   words.forEach((normalWord) => {
@@ -58,7 +58,7 @@ export function uwuifySentence(sentence: string): string {
     // 5% chance of a getting a random action
     } else if (random <= 0.10) {
       uwuified += ` ${getElement(actions)}`;
-    // 10% chance of stutter if the word hasn't been uwufied before for readability
+    // 10% chance of stutter if the word hasn't been uwuified before for readability
     } else if (random <= 0.20 && !isUwuified && !isUrl) {
       const letter = normalWord[0];
       const stutter = getRandomInt(0, 2);
@@ -74,7 +74,7 @@ export function uwuifySentence(sentence: string): string {
   return uwuified;
 }
 
-// Get a wandom uwu face
+// Get a random uwu face
 export function uwuFace(): string {
   return faces[Math.floor(Math.random() * faces.length)];
 }
