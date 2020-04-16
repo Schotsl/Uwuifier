@@ -1,2 +1,5 @@
+# Ignore everything
 *
+
+# Allow dist folder
 !dist
