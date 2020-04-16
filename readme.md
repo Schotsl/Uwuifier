@@ -1,6 +1,6 @@
 # Uwufier
 
-> This vewy light weight packwage will uwufy any sentwence or word and expowts a few vewy handy functions!! if youw into uwufying and mawking youw code more kawaii ÚwÚ (**this package is made in and supports supports TypeScript!**)
+> This vewy light weight packwage will uwufy any sentwence or word and expowts a few vewy handy functions!! if youw into uwufying and mawking youw code more kawaii ÚwÚ (**this package is made in and supports TypeScript!**)
 
 [![NPM Version][npm-image]][npm-url]
 
@@ -16,7 +16,7 @@ npm install uwufier --save
 >This is a test sentence to demonstrate the current functionality, as the package grows and becomes more advanced this sample will have to be updated!
 
 ### Very kawaii text:
->This is a test sentence to demonstwate the cuwwent functionyawity, as the package gwows and becomes mowe advanced this sampwe wiww have to be updated?!!11
+>This is a test sentence to demonstwate the cuwwent *boops your nose* functionyawity, as the package gwows and becomes mowe advanced this sampwe wiww *sees buldge* have to be updated?!?!
 
 ## Usage
 

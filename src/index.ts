@@ -46,7 +46,14 @@ export function uwufySentence(sentence: string): string {
   let uwufied = ``;
 
   words.forEach((word) => {
-    word = word.replace(new RegExp(/[?!]+/), getElement(exclimations));
+    // Insert random faces and actions
+    const random = Math.random();
+    if (random <= 0.05) {
+      uwufied += ` ${getElement(faces)}`;
+    } else if (random <= 0.1) {
+      uwufied += ` ${getElement(actions)}`;
+    }
+
     uwufied += ` ${pattern.test(word) ? word : uwufyWord(word)}`;
   });
 
