@@ -6,6 +6,12 @@
 
 ## Install
 
+### Deno
+```js
+import { uwuifySentence, uwuifyWord, uwuFace } from 'https://deno.land/x/uwuifier/src/index.ts';
+```
+
+### Node
 ```bash
 npm install uwuifier --save
 ```
@@ -24,6 +30,7 @@ npm install uwuifier --save
 `uwuifySentece()` takes in a string and returns an uwuified string. It doesn't uwuify URL's (unlike `uwuifyWord()`)
 
 ```javascript
+// Only required for Node
 import { uwuifySentence } from 'uwuifier';
 
 const normalSentence = "This is a normal sentence";
@@ -36,6 +43,7 @@ console.log(uwuifiedSentence);
 `uwuifyWord()` also takes in a string and returns an uwuified string, it uwuify's ever character and doesn't care about URL's)
 
 ```javascript
+// Only required for Node
 import { uwuifyWord } from 'uwuifier';
 
 const normalWord = "Train";
@@ -48,6 +56,7 @@ console.log(uwuifiedWord);
 `uwuFace()` just returns a very kawaii face such as ÚwÚ
 
 ```javascript
+// Only required for Node
 import { uwuFace } from 'uwuifier';
 
 const uwuFace = uwuFace();
