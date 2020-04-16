@@ -1,6 +1,6 @@
 # Uwufier
 
-> This vewy light weight packwage will uwufy any sentwence or word and expowts a few vewy handy functions!! if youw into uwufying and mawking youw code more kawaii ÚwÚ (**this package is made in and supports supports TypeScript!**)
+> This vewy light weight packwage will uwufy any sentwence or word and expowts a few vewy handy functions!! if youw into uwufying and mawking youw code more kawaii ÚwÚ (**this package is made in and supports TypeScript!**)
 
 [![NPM Version][npm-image]][npm-url]
 
