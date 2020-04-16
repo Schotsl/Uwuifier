@@ -9,7 +9,7 @@ const actions = [
   `*runs away*`,
   `*huggles tightly*`,
   `*boops your nose*`,
-  `*starts twerking*`,
+  `*starts twerking*`
 ];
 const exclimations = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
@@ -56,15 +56,15 @@ export function uwufySentence(sentence: string): string {
     // 5% chance of getting a random face
     if (random <= 0.05) {
       uwufied += ` ${getElement(faces)}`;
-    // 5% chance of a getting a random action
-    } else if (random <= 0.10) {
+      // 5% chance of a getting a random action
+    } else if (random <= 0.1) {
       uwufied += ` ${getElement(actions)}`;
-    // 10% chance of stutter if the word hasn't been uwufied before for readability
-    } else if (random <= 0.20 && !isUwuified && !isUrl) {
+      // 10% chance of stutter if the word hasn't been uwufied before for readability
+    } else if (random <= 0.2 && !isUwuified && !isUrl) {
       const letter = normalWord[0];
       const stutter = getRandomInt(0, 2);
 
-      for (let i = 0; i < stutter; i ++) {
+      for (let i = 0; i < stutter; i++) {
         uwufiedWord = `${letter}-${uwufiedWord}`;
       }
     }
