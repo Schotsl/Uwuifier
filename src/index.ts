@@ -45,16 +45,31 @@ export function uwufySentence(sentence: string): string {
   // If the wowd is a UWW just attach it to the nyew stwing without uwufying
   let uwufied = ``;
 
-  words.forEach((word) => {
-    // Insert random faces and actions
+  words.forEach((normalWord) => {
+    const isUrl = pattern.test(normalWord);
+    const isUwuified = normalWord !== uwufyWord(normalWord);
+
+    let uwufiedWord = isUrl ? normalWord : uwufyWord(normalWord);
+
     const random = Math.random();
+
+    // 5% chance of getting a random face
     if (random <= 0.05) {
       uwufied += ` ${getElement(faces)}`;
-    } else if (random <= 0.1) {
+    // 5% chance of a getting a random action
+    } else if (random <= 0.10) {
       uwufied += ` ${getElement(actions)}`;
+    // 10% chance of stutter if the word hasn't been uwufied before for readability
+    } else if (random <= 0.20 && !isUwuified && !isUrl) {
+      const letter = normalWord[0];
+      const stutter = getRandomInt(0, 2);
+
+      for (let i = 0; i < stutter; i ++) {
+        uwufiedWord = `${letter}-${uwufiedWord}`;
+      }
     }
 
-    uwufied += ` ${pattern.test(word) ? word : uwufyWord(word)}`;
+    uwufied += ` ${uwufiedWord}`;
   });
 
   return uwufied;
