@@ -1,4 +1,4 @@
-import { uwuifyWord, uwuifySentence, uwuFace } from '../index';
+import { uwuifyWord, uwuifySentence, uwuFace, getFaces } from '../index';
 
 const senteces = [
   'I had to get a tetanus vaccine when i stabbed my foot by accident',
@@ -22,12 +22,13 @@ function getElement(array: string[]): string {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-console.log(`Please take a look if these senteces like uwuified:`)
+console.log(`Please take a look if these senteces like uwuified:`);
 
 test(`Uwufy a word`, () => {
   const normalWord = getElement(words);
   const uwuifiedWord = uwuifyWord(normalWord);
-  
+
+  console.log(`\nNormal word 📔: ${normalWord}`);
   console.log(`\nUwuified word 📘: ${uwuifiedWord}`);
 
   expect(typeof uwuifiedWord).toBe('string');
@@ -38,12 +39,16 @@ test('Uwufy a sentence', () => {
   const normalSentence = getElement(senteces);
   const uwufiedSentence = uwuifySentence(normalSentence);
 
-  console.log(`\nUwuified sentence 📔: ${uwufiedSentence}`)
+  console.log(`\nNormal sentence 📔: ${normalSentence}`);
+  console.log(`\nUwuified sentence 📘: ${uwufiedSentence}`);
 
   expect(typeof uwufiedSentence).toBe('string');
   expect(uwufiedSentence.length).toBeGreaterThanOrEqual(normalSentence.length);
 });
 
 test('Get an uwu face', () => {
-  expect(typeof uwuFace()).toBe('string');
+  const emptyFaces: boolean = getFaces().length === 0;
+  const isFace: boolean = typeof uwuFace() === 'string';
+  
+  expect(emptyFaces || isFace);
 });
