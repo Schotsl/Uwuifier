@@ -23,6 +23,25 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getCapitalPercentage(input: string): number {
+  let totalLetters = 0;
+  let upperLetters = 0;
+
+  for (let i = 0; i < input.length; i++) {
+    const currentLetter = input[i];
+
+    if (new RegExp(/^[a-zA-Z]+$/).test(currentLetter)) {
+      totalLetters ++;
+      
+      if (currentLetter === currentLetter.toUpperCase()) {
+        upperLetters++;
+      }
+    }
+  }
+
+  return upperLetters / totalLetters;
+}
+
 // All get functions
 export function getExclimations(): string[] {
   return exclimations;
@@ -88,20 +107,25 @@ export function uwuifySentence(sentence: string): string {
   // If the word is a URL just attach it to the new string without uwuifying
   let uwuified = ``;
 
-  words.forEach((normalWord) => {
+  words.forEach((normalWord, wordIndex) => {
     const isUrl = pattern.test(normalWord);
     const isUwuified = normalWord !== uwuifyWord(normalWord);
 
     let uwuifiedWord = isUrl ? normalWord : uwuifyWord(normalWord);
+
+    let insertedExpression = false;
+    let removeCapital = false;
 
     const random = Math.random();
 
     // 5% chance of getting a random face
     if (random <= 0.05 && faces.length) {
       uwuified += ` ${getElement(faces)}`;
+      insertedExpression = true;
       // 5% chance of a getting a random action
     } else if (random <= 0.1 && actions.length) {
       uwuified += ` ${getElement(actions)}`;
+      insertedExpression = true;
       // 10% chance of stutter if the word hasn't been uwuified before for readability
     } else if (random <= 0.2 && !isUwuified && !isUrl) {
       const letter = normalWord[0];
@@ -112,7 +136,32 @@ export function uwuifySentence(sentence: string): string {
       }
     }
 
-    uwuified += ` ${uwuifiedWord}`;
+    // If we added a face or action
+    if (insertedExpression) {
+
+      // Only check if we should remove the first capital letter if it's actually a capital letter
+      if (normalWord[0] === normalWord[0].toUpperCase()) {
+
+        if (wordIndex === 0) {
+          // If it's the first word and has less than 50% upper case
+          if (getCapitalPercentage(normalWord) <= 0.5) removeCapital = true;
+        }
+        
+        if (wordIndex !== 0) {
+          // If the previous word ends with punctuation continue with the logic
+          const previousWord = words[wordIndex - 1];
+          const previousWordLast = previousWord[previousWord.length - 1];
+
+          if (new RegExp('[.!?\\-]').test(previousWordLast)) {
+            // If the current word has less than 50% upper case
+            if (getCapitalPercentage(normalWord) <= 0.5) removeCapital = true;
+          }
+        }
+      }
+    }
+
+    // If remove capital is true remove the first capital letter
+    uwuified += removeCapital ? ` ${uwuifiedWord.charAt(0).toLowerCase()}${uwuifiedWord.slice(1)}` : ` ${uwuifiedWord}`;
   });
 
   return uwuified;
