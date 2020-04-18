@@ -1,4 +1,5 @@
 import { uwuifyWord, uwuifySentence, uwuFace, getFaces } from '../index';
+import { getElement } from '../utils';
 
 const senteces = [
   'I had to get a tetanus vaccine when i stabbed my foot by accident',
@@ -17,10 +18,6 @@ const words = [
   'Netherlands',
   'Grandpa'
 ]
-
-function getElement(array: string[]): string {
-  return array[Math.floor(Math.random() * array.length)];
-}
 
 console.log(`Please take a look if these senteces like uwuified:`);
 
