@@ -14,12 +14,10 @@ export function getCapitalPercentage(input: string): number {
   let totalLetters = 0;
   let upperLetters = 0;
 
-  for (let i = 0; i < input.length; i++) {
-    const currentLetter = input[i];
-
+  for (const currentLetter of input) {
     if (new RegExp(/^[a-zA-Z]+$/).test(currentLetter)) {
-      totalLetters ++;
-      
+      totalLetters++;
+
       if (currentLetter === currentLetter.toUpperCase()) {
         upperLetters++;
       }
