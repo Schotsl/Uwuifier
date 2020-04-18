@@ -111,15 +111,13 @@ export function uwuifySentence(sentence: string): string {
 
     // If we added a face or action
     if (insertedExpression) {
-
       // Only check if we should remove the first capital letter if it's actually a capital letter
       if (normalWord[0] === normalWord[0].toUpperCase()) {
-
         if (wordIndex === 0) {
           // If it's the first word and has less than 50% upper case
           if (getCapitalPercentage(normalWord) <= 0.5) removeCapital = true;
         }
-        
+
         if (wordIndex !== 0) {
           // If the previous word ends with punctuation continue with the logic
           const previousWord = words[wordIndex - 1];

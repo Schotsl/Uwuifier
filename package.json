@@ -34,7 +34,7 @@
     "jest": "^25.3.0",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
-    "ts-jest": "^25.3.1",
+    "ts-jest": "^25.4.0",
     "tslint": "^6.1.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3"
@@ -43,13 +43,10 @@
     "test": "jest --config jestconfig.json",
     "lint": "tslint -p tsconfig.json",
     "serve": "nodemon",
-    "build": "tsc && node dist/index.js",
+    "build": "npm run lint && npm run format && tsc && npm test",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint & npm run format & npm run build & npm test"
+    "prepare": "npm run build"
   },
-  "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-  "lint": "tslint -p tsconfig.json",
   "nodemonConfig": {
     "ignore": [
       ".git",
@@ -58,7 +55,7 @@
     "watch": [
       "src"
     ],
-    "exec": "npm run lint & npm run format & npm run build",
+    "exec": "npm run build",
     "ext": "ts"
   }
 }
