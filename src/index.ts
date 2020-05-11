@@ -22,8 +22,8 @@ export class Uwuifier {
   ];
   public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
-  private _wordsModifier: number = 1;
   private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  private _wordsModifier: number = 1;
   private _exclimationsModifier: number = 1;
 
   constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
@@ -37,18 +37,16 @@ export class Uwuifier {
   }
 
   set spacesModifier(spacesModifierParameter: spacesModifier) {
-    if (spacesModifierParameter) {
-      const combinedValue =
-        spacesModifierParameter.actionPercentage +
-        spacesModifierParameter.facePercentage +
-        spacesModifierParameter.stutterPercentage;
+    const combinedValue =
+      spacesModifierParameter.actionPercentage +
+      spacesModifierParameter.facePercentage +
+      spacesModifierParameter.stutterPercentage;
 
-      if (combinedValue < 0 || combinedValue > 1) {
-        throw new Error('Combined values of space modifier must be between 0 and 1');
-      }
-
-      this._spacesModifier = spacesModifierParameter;
+    if (combinedValue < 0 || combinedValue > 1) {
+      throw new Error('Combined values of space modifier must be between 0 and 1');
     }
+
+    this._spacesModifier = spacesModifierParameter;
   }
 
   get exclimationsModifier(): number {
@@ -56,13 +54,11 @@ export class Uwuifier {
   }
 
   set exclimationsModifier(exclimationsModifierParameter: number) {
-    if (exclimationsModifierParameter) {
-      if (exclimationsModifierParameter < 0 || exclimationsModifierParameter > 1) {
-        throw new Error('Words modifier value must be a number between 0 and 1');
-      }
-
-      this._exclimationsModifier = exclimationsModifierParameter;
+    if (exclimationsModifierParameter < 0 || exclimationsModifierParameter > 1) {
+      throw new Error('Words modifier value must be a number between 0 and 1');
     }
+
+    this._exclimationsModifier = exclimationsModifierParameter;
   }
 
   get wordsModifier(): number {
@@ -70,13 +66,11 @@ export class Uwuifier {
   }
 
   set wordsModifier(wordsModifierParameter: number) {
-    if (wordsModifierParameter) {
-      if (wordsModifierParameter < 0 || wordsModifierParameter > 1) {
-        throw new Error('Words modifier value must be a number between 0 and 1');
-      }
-
-      this._wordsModifier = wordsModifierParameter;
+    if (wordsModifierParameter < 0 || wordsModifierParameter > 1) {
+      throw new Error('Words modifier value must be a number between 0 and 1');
     }
+
+    this._wordsModifier = wordsModifierParameter;
   }
 
   public uwuifyWords(sentence: string): string {
