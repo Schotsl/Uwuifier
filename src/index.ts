@@ -27,9 +27,9 @@ export class Uwuifier {
   private _exclimationsModifier: number = 1;
 
   constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (exclimationsModifierPara) this.exclimationsModifier = exclimationsModifierPara;
-    if (spacesModifierPara) this.spacesModifier = spacesModifierPara;
-    if (wordsModifierPara) this.wordsModifier = wordsModifierPara;
+    if (typeof exclimationsModifierPara !== 'undefined') this.exclimationsModifier = exclimationsModifierPara;
+    if (typeof spacesModifierPara !== 'undefined') this.spacesModifier = spacesModifierPara;
+    if (typeof wordsModifierPara !== 'undefined') this.wordsModifier = wordsModifierPara;
   }
 
   get spacesModifier(): spacesModifier {
