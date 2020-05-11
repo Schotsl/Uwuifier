@@ -34,9 +34,9 @@ export class Uwuifier {
     const random = Math.random();
     const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
-    words.forEach((wordValue) => {
+    words.forEach((wordValue, wordIndex) => {
       // If word is a URL don't uwuifiy it
-      if (pattern.test(wordValue)) {
+      if (!pattern.test(wordValue)) {
         if (random <= this.wordsModifier) wordValue = wordValue.replace(/(?:r|l)/g, `w`);
         if (random <= this.wordsModifier) wordValue = wordValue.replace(/(?:R|L)/g, `W`);
         if (random <= this.wordsModifier) wordValue = wordValue.replace(/n([aeiou])/g, `ny$1`);
@@ -46,7 +46,7 @@ export class Uwuifier {
       }
 
       // Reconstruct the string with uwuified words
-      uwuifiedSentence += ` ${wordValue}`;
+      uwuifiedSentence += wordIndex === 0 ? wordValue : ` ${wordValue}`;
     });
 
     return uwuifiedSentence;
@@ -61,6 +61,7 @@ export class Uwuifier {
     words.forEach((wordValue, wordIndex) => {
       // TODO: use seed value
       const random = Math.random();
+      const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
       let insertedExpression = false;
       let removeCapital = false;
@@ -78,19 +79,25 @@ export class Uwuifier {
         uwuifiedSentence += ` ${getElement(this.actions)}`;
         insertedExpression = true;
       } else if (random <= stutterThreshold) {
-        // Add stutter with a length between 0 and 2 length
-        const letter = wordValue[0];
-        const stutter = getRandomInt(0, 2);
+        // If first character is defined
+        if (wordValue[0]) {
+          // If string isn't a URL
+          if (!pattern.test(wordValue)) {
+            // Add stutter with a length between 0 and 2 length
+            const letter = wordValue[0];
+            const stutter = getRandomInt(0, 2);
 
-        for (let i = 0; i < stutter; i++) {
-          wordValue = `${letter}-${wordValue}`;
+            for (let i = 0; i < stutter; i++) {
+              wordValue = `${letter}-${wordValue}`;
+            }
+          }
         }
       }
 
       // If we added a face or action
       if (insertedExpression) {
         // Check if we should remove the first capital letter
-        if (wordValue[0] === wordValue[0].toUpperCase()) {
+        if (wordValue[0] && wordValue[0] === wordValue[0].toUpperCase()) {
           if (wordIndex === 0) {
             // If it's the first word and has less than 50% upper case
             if (getCapitalPercentage(wordValue) <= 0.5) removeCapital = true;
@@ -109,10 +116,11 @@ export class Uwuifier {
         }
       }
 
-      // If remove capital is true remove the first capital letter
-      uwuifiedSentence += removeCapital
-        ? ` ${wordValue.charAt(0).toLowerCase()}${wordValue.slice(1)}`
-        : ` ${wordValue}`;
+      // Remove the first capital letter if needed
+      wordValue = removeCapital ? `${wordValue.charAt(0).toLowerCase()}${wordValue.slice(1)}` : wordValue;
+
+      // Reconstruct the string
+      uwuifiedSentence += wordIndex === 0 ? wordValue : ` ${wordValue}`;
     });
 
     return uwuifiedSentence;
@@ -137,7 +145,7 @@ export class Uwuifier {
       }
 
       // Reconstruct the string
-      uwuifiedSentence += ` ${wordValue}`;
+      uwuifiedSentence += wordIndex === 0 ? wordValue : ` ${wordValue}`;
     });
 
     return uwuifiedSentence;
