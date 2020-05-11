@@ -35,10 +35,3 @@ test('Uwufy a sentence', () => {
   expect(typeof uwufiedSentence).toBe('string');
   expect(uwufiedSentence.length).toBeGreaterThanOrEqual(normalSentence.length);
 });
-
-test('Get an uwu face', () => {
-  const emptyFaces: boolean = uwuifier.faces.length === 0;
-  const isFace: boolean = typeof uwuifier.uwuFace() === 'string';
-
-  expect(emptyFaces || isFace);
-});

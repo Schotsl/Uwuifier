@@ -117,9 +117,4 @@ export class Uwuifier {
 
     return uwuifiedString;
   }
-
-  // Get a random uwu face
-  public uwuFace(): string {
-    return this.faces[Math.floor(Math.random() * this.faces.length)];
-  }
 }
