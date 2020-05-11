@@ -16,63 +16,69 @@ export class Uwuifier {
   ];
   public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
-  public uwuifyWord(word: string): string {
-    word = word.replace(/(?:r|l)/g, `w`);
-    word = word.replace(/(?:R|L)/g, `W`);
-    word = word.replace(/n([aeiou])/g, `ny$1`);
-    word = word.replace(/N([aeiou])/g, `Ny$1`);
-    word = word.replace(/N([AEIOU])/g, `Ny$1`);
-    word = word.replace(/ove/g, `uv`);
-    return word;
-  }
+  public uwuifyWords(sentence: string): string {
+    let uwuifiedSentence = ``;
 
-  public uwuifySentence(sentence: string): string {
-    // Replace normal question marks and exclamations with more 'expressive' characters
-    if (this.exclimations.length) sentence = sentence.replace(new RegExp('[?!]+$'), getElement(this.exclimations));
-
-    // Spwit the sentence into wowds
+    // Split the string into words
     const words = sentence.split(` `);
     const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
-    // If the word is a URL just attach it to the new string without uwuifying
-    let uwuified = ``;
+    words.forEach((word) => {
+      // If word is a URL don't uwuifiy it
+      if (pattern.test(word)) {
+        word = word.replace(/(?:r|l)/g, `w`);
+        word = word.replace(/(?:R|L)/g, `W`);
+        word = word.replace(/n([aeiou])/g, `ny$1`);
+        word = word.replace(/N([aeiou])/g, `Ny$1`);
+        word = word.replace(/N([AEIOU])/g, `Ny$1`);
+        word = word.replace(/ove/g, `uv`);
+      }
 
-    words.forEach((normalWord, wordIndex) => {
-      const isUrl = pattern.test(normalWord);
-      const isUwuified = normalWord !== this.uwuifyWord(normalWord);
+      // Reconstruct the string with uwuified words
+      uwuifiedSentence += ` ${word}`;
+    });
 
-      let uwuifiedWord = isUrl ? normalWord : this.uwuifyWord(normalWord);
+    return uwuifiedSentence;
+  }
+
+  public uwuifySpaces(sentence: string): string {
+    let uwuifiedSentence = ``;
+
+    // Split the string into words
+    const words = sentence.split(` `);
+
+    words.forEach((wordValue, wordIndex) => {
+      // TODO: use seed value
+      const random = Math.random();
 
       let insertedExpression = false;
       let removeCapital = false;
 
-      const random = Math.random();
-
-      // 5% chance of getting a random face
       if (random <= 0.05 && this.faces.length) {
-        uwuified += ` ${getElement(this.faces)}`;
+        // Add random face before the word
+        uwuifiedSentence += ` ${getElement(this.faces)}`;
         insertedExpression = true;
-        // 5% chance of a getting a random action
       } else if (random <= 0.1 && this.actions.length) {
-        uwuified += ` ${getElement(this.actions)}`;
+        // Add random action before the word
+        uwuifiedSentence += ` ${getElement(this.actions)}`;
         insertedExpression = true;
-        // 10% chance of stutter if the word hasn't been uwuified before for readability
-      } else if (random <= 0.2 && !isUwuified && !isUrl) {
-        const letter = normalWord[0];
+      } else if (random <= 0.2) {
+        // Add stutter with a length between 0 and 2 length
+        const letter = wordValue[0];
         const stutter = getRandomInt(0, 2);
 
         for (let i = 0; i < stutter; i++) {
-          uwuifiedWord = `${letter}-${uwuifiedWord}`;
+          wordValue = `${letter}-${wordValue}`;
         }
       }
 
       // If we added a face or action
       if (insertedExpression) {
-        // Only check if we should remove the first capital letter if it's actually a capital letter
-        if (normalWord[0] === normalWord[0].toUpperCase()) {
+        // Check if we should remove the first capital letter
+        if (wordValue[0] === wordValue[0].toUpperCase()) {
           if (wordIndex === 0) {
             // If it's the first word and has less than 50% upper case
-            if (getCapitalPercentage(normalWord) <= 0.5) removeCapital = true;
+            if (getCapitalPercentage(wordValue) <= 0.5) removeCapital = true;
           }
 
           if (wordIndex !== 0) {
@@ -82,19 +88,34 @@ export class Uwuifier {
 
             if (new RegExp('[.!?\\-]').test(previousWordLast)) {
               // If the current word has less than 50% upper case
-              if (getCapitalPercentage(normalWord) <= 0.5) removeCapital = true;
+              if (getCapitalPercentage(wordValue) <= 0.5) removeCapital = true;
             }
           }
         }
       }
 
       // If remove capital is true remove the first capital letter
-      uwuified += removeCapital
-        ? ` ${uwuifiedWord.charAt(0).toLowerCase()}${uwuifiedWord.slice(1)}`
-        : ` ${uwuifiedWord}`;
+      uwuifiedSentence += removeCapital
+        ? ` ${wordValue.charAt(0).toLowerCase()}${wordValue.slice(1)}`
+        : ` ${wordValue}`;
     });
 
-    return uwuified;
+    return uwuifiedSentence;
+  }
+
+  public uwuifyExclimations(sentence: string): string {
+    if (this.exclimations.length) sentence = sentence.replace(new RegExp('[?!]+$'), getElement(this.exclimations));
+    return sentence;
+  }
+
+  public uwuifySentence(sentence: string): string {
+    let uwuifiedString = sentence;
+
+    uwuifiedString = this.uwuifyExclimations(uwuifiedString);
+    uwuifiedString = this.uwuifySpaces(uwuifiedString);
+    uwuifiedString = this.uwuifyWords(uwuifiedString);
+
+    return uwuifiedString;
   }
 
   // Get a random uwu face

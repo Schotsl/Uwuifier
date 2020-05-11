@@ -16,7 +16,7 @@ console.log(`Please take a look if these senteces like uwuified:`);
 
 test(`Uwufy a word`, () => {
   const normalWord = getElement(words);
-  const uwuifiedWord = uwuifier.uwuifyWord(normalWord);
+  const uwuifiedWord = uwuifier.uwuifyWords(normalWord);
 
   console.log(`\nNormal word 📔: ${normalWord}`);
   console.log(`\nUwuified word 📘: ${uwuifiedWord}`);
