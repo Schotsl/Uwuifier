@@ -2,7 +2,7 @@
 
 import { getElement, getRandomInt, getCapitalPercentage } from './utils';
 
-interface spaceModifier {
+interface spacesModifier {
   facePercentage: number;
   actionPercentage: number;
   stutterPercentage: number;
@@ -22,9 +22,62 @@ export class Uwuifier {
   ];
   public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
-  private wordsModifier: number = 1;
-  private spacesModifier: spaceModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
-  private exclimationsModifier: number = 1;
+  private _wordsModifier: number = 1;
+  private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  private _exclimationsModifier: number = 1;
+
+  constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
+    if (exclimationsModifierPara) this.exclimationsModifier = exclimationsModifierPara;
+    if (spacesModifierPara) this.spacesModifier = spacesModifierPara;
+    if (wordsModifierPara) this.wordsModifier = wordsModifierPara;
+  }
+
+  get spacesModifier(): spacesModifier {
+    return this._spacesModifier;
+  }
+
+  set spacesModifier(spacesModifierParameter: spacesModifier) {
+    if (spacesModifierParameter) {
+      const combinedValue =
+        spacesModifierParameter.actionPercentage +
+        spacesModifierParameter.facePercentage +
+        spacesModifierParameter.stutterPercentage;
+
+      if (combinedValue < 0 || combinedValue > 1) {
+        throw new Error('Combined values of space modifier must be between 0 and 1');
+      }
+
+      this._spacesModifier = spacesModifierParameter;
+    }
+  }
+
+  get exclimationsModifier(): number {
+    return this._exclimationsModifier;
+  }
+
+  set exclimationsModifier(exclimationsModifierParameter: number) {
+    if (exclimationsModifierParameter) {
+      if (exclimationsModifierParameter < 0 || exclimationsModifierParameter > 1) {
+        throw new Error('Words modifier value must be a number between 0 and 1');
+      }
+
+      this._exclimationsModifier = exclimationsModifierParameter;
+    }
+  }
+
+  get wordsModifier(): number {
+    return this._wordsModifier;
+  }
+
+  set wordsModifier(wordsModifierParameter: number) {
+    if (wordsModifierParameter) {
+      if (wordsModifierParameter < 0 || wordsModifierParameter > 1) {
+        throw new Error('Words modifier value must be a number between 0 and 1');
+      }
+
+      this._wordsModifier = wordsModifierParameter;
+    }
+  }
 
   public uwuifyWords(sentence: string): string {
     let uwuifiedSentence = ``;
@@ -37,12 +90,12 @@ export class Uwuifier {
     words.forEach((wordValue, wordIndex) => {
       // If word is a URL don't uwuifiy it
       if (!pattern.test(wordValue)) {
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/(?:r|l)/g, `w`);
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/(?:R|L)/g, `W`);
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/n([aeiou])/g, `ny$1`);
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/N([aeiou])/g, `Ny$1`);
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/N([AEIOU])/g, `Ny$1`);
-        if (random <= this.wordsModifier) wordValue = wordValue.replace(/ove/g, `uv`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/(?:r|l)/g, `w`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/(?:R|L)/g, `W`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/n([aeiou])/g, `ny$1`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/N([aeiou])/g, `Ny$1`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/N([AEIOU])/g, `Ny$1`);
+        if (random <= this._wordsModifier) wordValue = wordValue.replace(/ove/g, `uv`);
       }
 
       // Reconstruct the string with uwuified words
@@ -66,9 +119,9 @@ export class Uwuifier {
       let insertedExpression = false;
       let removeCapital = false;
 
-      const faceThreshold = this.spacesModifier.facePercentage;
-      const actionThreshold = this.spacesModifier.actionPercentage + faceThreshold;
-      const stutterThreshold = this.spacesModifier.stutterPercentage + actionThreshold;
+      const faceThreshold = this._spacesModifier.facePercentage;
+      const actionThreshold = this._spacesModifier.actionPercentage + faceThreshold;
+      const stutterThreshold = this._spacesModifier.stutterPercentage + actionThreshold;
 
       if (random <= faceThreshold && this.faces.length) {
         // Add random face before the word
@@ -138,7 +191,7 @@ export class Uwuifier {
 
       // If there are exclimations replace them
       if (pattern.test(wordValue)) {
-        if (random <= this.exclimationsModifier) {
+        if (random <= this._exclimationsModifier) {
           wordValue = wordValue.replace(pattern, ``);
           wordValue += getElement(this.exclimations);
         }
@@ -154,9 +207,9 @@ export class Uwuifier {
   public uwuifySentence(sentence: string): string {
     let uwuifiedString = sentence;
 
+    uwuifiedString = this.uwuifyWords(uwuifiedString);
     uwuifiedString = this.uwuifyExclimations(uwuifiedString);
     uwuifiedString = this.uwuifySpaces(uwuifiedString);
-    uwuifiedString = this.uwuifyWords(uwuifiedString);
 
     return uwuifiedString;
   }
