@@ -78,7 +78,6 @@ export class Uwuifier {
 
     // Split the string into words
     const words = sentence.split(` `);
-    const random = Math.random();
     const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
     const uwuMap = [
       [/(?:r|l)/g, `w`],
@@ -91,9 +90,14 @@ export class Uwuifier {
 
     words.forEach((wordValue, wordIndex) => {
       // If word is a URL don't uwuifiy it
-      if (!pattern.test(wordValue) && random <= this._wordsModifier) {
+      if (!pattern.test(wordValue)) {
         for (const [oldWord, newWord] of uwuMap) {
-          wordValue = wordValue.replace(oldWord, newWord as string);
+          const random = Math.random();
+
+          // Generate a random value for every map so words will be partly uwuified instead of not at all
+          if (random <= this._wordsModifier) {
+            wordValue = wordValue.replace(oldWord, newWord as string);
+          }
         }
       }
 
