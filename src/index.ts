@@ -80,16 +80,21 @@ export class Uwuifier {
     const words = sentence.split(` `);
     const random = Math.random();
     const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
+    const uwuMap = [
+      [/(?:r|l)/g, `w`],
+      [/(?:R|L)/g, `W`],
+      [/n([aeiou])/g, `ny$1`],
+      [/N([aeiou])/g, `Ny$1`],
+      [/N([AEIOU])/g, `Ny$1`],
+      [/ove/g, `uv`]
+    ];
 
     words.forEach((wordValue, wordIndex) => {
       // If word is a URL don't uwuifiy it
-      if (!pattern.test(wordValue)) {
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/(?:r|l)/g, `w`);
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/(?:R|L)/g, `W`);
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/n([aeiou])/g, `ny$1`);
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/N([aeiou])/g, `Ny$1`);
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/N([AEIOU])/g, `Ny$1`);
-        if (random <= this._wordsModifier) wordValue = wordValue.replace(/ove/g, `uv`);
+      if (!pattern.test(wordValue) && random <= this._wordsModifier) {
+        for (const [oldWord, newWord] of uwuMap) {
+          wordValue = wordValue.replace(oldWord, newWord as string);
+        }
       }
 
       // Reconstruct the string with uwuified words
