@@ -30,9 +30,9 @@ export class Uwuifier {
   private _exclimationsModifier: number = 1;
 
   constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
     if (typeof spacesModifierPara !== 'undefined') this._spacesModifier = spacesModifierPara;
     if (typeof wordsModifierPara !== 'undefined') this._wordsModifier = wordsModifierPara;
+    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
   }
 
   public uwuifyWords(sentence: string): string {
@@ -115,7 +115,7 @@ export class Uwuifier {
         if (wordValue[0] && wordValue[0] === wordValue[0].toUpperCase()) {
           if (wordIndex === 0) {
             // If it's the first word and has less than 50% upper case
-            removeCapital = (getCapitalPercentage(wordValue) <= 0.5);
+            removeCapital = getCapitalPercentage(wordValue) <= 0.5;
           }
 
           if (wordIndex !== 0) {
@@ -125,7 +125,7 @@ export class Uwuifier {
             // If the previous word ends with punctuation continue with the logic
             if (punctuationRegex.test(previousWordLast)) {
               // If the current word has less than 50% upper case
-              removeCapital = (getCapitalPercentage(wordValue) <= 0.5);
+              removeCapital = getCapitalPercentage(wordValue) <= 0.5;
             }
           }
         }
