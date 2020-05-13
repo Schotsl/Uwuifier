@@ -22,55 +22,17 @@ export class Uwuifier {
   ];
   public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
+  @InitModifierParam()
   private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  @InitModifierParam()
   private _wordsModifier: number = 1;
+  @InitModifierParam()
   private _exclimationsModifier: number = 1;
 
   constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (typeof exclimationsModifierPara !== 'undefined') this.exclimationsModifier = exclimationsModifierPara;
-    if (typeof spacesModifierPara !== 'undefined') this.spacesModifier = spacesModifierPara;
-    if (typeof wordsModifierPara !== 'undefined') this.wordsModifier = wordsModifierPara;
-  }
-
-  get spacesModifier(): spacesModifier {
-    return this._spacesModifier;
-  }
-
-  set spacesModifier(spacesModifierParameter: spacesModifier) {
-    const combinedValue =
-      spacesModifierParameter.actionPercentage +
-      spacesModifierParameter.facePercentage +
-      spacesModifierParameter.stutterPercentage;
-
-    if (combinedValue < 0 || combinedValue > 1) {
-      throw new Error('Combined values of space modifier must be between 0 and 1');
-    }
-
-    this._spacesModifier = spacesModifierParameter;
-  }
-
-  get exclimationsModifier(): number {
-    return this._exclimationsModifier;
-  }
-
-  set exclimationsModifier(exclimationsModifierParameter: number) {
-    if (exclimationsModifierParameter < 0 || exclimationsModifierParameter > 1) {
-      throw new Error('Words modifier value must be a number between 0 and 1');
-    }
-
-    this._exclimationsModifier = exclimationsModifierParameter;
-  }
-
-  get wordsModifier(): number {
-    return this._wordsModifier;
-  }
-
-  set wordsModifier(wordsModifierParameter: number) {
-    if (wordsModifierParameter < 0 || wordsModifierParameter > 1) {
-      throw new Error('Words modifier value must be a number between 0 and 1');
-    }
-
-    this._wordsModifier = wordsModifierParameter;
+    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
+    if (typeof spacesModifierPara !== 'undefined') this._spacesModifier = spacesModifierPara;
+    if (typeof wordsModifierPara !== 'undefined') this._wordsModifier = wordsModifierPara;
   }
 
   public uwuifyWords(sentence: string): string {
@@ -212,4 +174,31 @@ export class Uwuifier {
 
     return uwuifiedString;
   }
+}
+
+function InitModifierParam() {
+  return function (target: { [key: string]: any }, key: string) {
+    let value = target[key];
+
+    const getter = () => value;
+
+    const setter = (next: number | object) => {
+      if (typeof next === 'object') {
+        next = Object.values(next).reduce((a, b) => a + b);
+      }
+
+      if (next < 0 || next > 1) {
+        throw new Error(`${key} modifier value must be a number between 0 and 1`);
+      }
+
+      value = next;
+    };
+
+    Object.defineProperty(target, key, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true
+    });
+  };
 }
