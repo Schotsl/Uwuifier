@@ -1,6 +1,7 @@
 'use strict';
 
-import { getElement, getRandomInt, getCapitalPercentage, isUri } from './utils';
+import { getElement, getRandomInt, getCapitalPercentage } from './utils';
+import { isUri } from './valid-url';
 
 interface spacesModifier {
   facePercentage: number;
