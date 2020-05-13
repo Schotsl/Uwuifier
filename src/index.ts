@@ -1,6 +1,6 @@
 'use strict';
 
-import { getElement, getRandomInt, getCapitalPercentage } from './utils';
+import { getElement, getRandomInt, getCapitalPercentage, isUri } from './utils';
 
 interface spacesModifier {
   facePercentage: number;
@@ -78,7 +78,6 @@ export class Uwuifier {
 
     // Split the string into words
     const words = sentence.split(` `);
-    const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
     const uwuMap = [
       [/(?:r|l)/g, `w`],
       [/(?:R|L)/g, `W`],
@@ -89,8 +88,8 @@ export class Uwuifier {
     ];
 
     words.forEach((wordValue, wordIndex) => {
-      // If word is a URL don't uwuifiy it
-      if (!pattern.test(wordValue)) {
+      // If word is a URI don't uwuifiy it
+      if (!isUri(wordValue)) {
         for (const [oldWord, newWord] of uwuMap) {
           const random = Math.random();
 
@@ -113,7 +112,6 @@ export class Uwuifier {
 
     // Split the string into words
     const words = sentence.split(` `);
-    const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
     const faceThreshold = this._spacesModifier.facePercentage;
     const actionThreshold = this._spacesModifier.actionPercentage + faceThreshold;
@@ -135,8 +133,8 @@ export class Uwuifier {
         uwuifiedSentence += ` ${getElement(this.actions)}`;
         insertedExpression = true;
       } else if (random <= stutterThreshold) {
-        // If first character is defined and string isn't a URL
-        if (wordValue[0] && !pattern.test(wordValue)) {
+        // If first character is defined and string isn't a URI
+        if (wordValue[0] && !isUri(wordValue)) {
           const letter = wordValue[0];
           // Add stutter with a length between 0 and 2
           const stutter = getRandomInt(0, 2);
