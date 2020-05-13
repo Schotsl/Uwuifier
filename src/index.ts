@@ -175,8 +175,8 @@ export class Uwuifier {
   }
 }
 
-function InitModifierParam() {
-  return function (target: { [key: string]: any }, key: string) {
+const InitModifierParam = () => {
+  return () => (target: { [key: string]: any }, key: string) {
     let value = target[key];
 
     const getter = () => value;
