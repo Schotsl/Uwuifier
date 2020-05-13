@@ -10,6 +10,7 @@ interface spacesModifier {
 
 export class Uwuifier {
   public faces: string[] = [`(・\`ω´・)`, `;;w;;`, `owo`, `UwU`, `>w<`, `^w^`, `ÚwÚ`, `:3`, `x3`];
+  public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
   public actions: string[] = [
     `*blushes*`,
     `*whispers to self*`,
@@ -20,7 +21,6 @@ export class Uwuifier {
     `*boops your nose*`,
     `*starts twerking*`
   ];
-  public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
 
   @InitModifierParam()
   private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
@@ -40,7 +40,6 @@ export class Uwuifier {
 
     // Split the string into words
     const words = sentence.split(` `);
-    const random = Math.random();
     const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
     const uwuMap = [
       [/(?:r|l)/g, `w`],
@@ -53,9 +52,14 @@ export class Uwuifier {
 
     words.forEach((wordValue, wordIndex) => {
       // If word is a URL don't uwuifiy it
-      if (!pattern.test(wordValue) && random <= this._wordsModifier) {
+      if (!pattern.test(wordValue)) {
         for (const [oldWord, newWord] of uwuMap) {
-          wordValue = wordValue.replace(oldWord, newWord as string);
+          const random = Math.random();
+
+          // Generate a random value for every map so words will be partly uwuified instead of not at all
+          if (random <= this._wordsModifier) {
+            wordValue = wordValue.replace(oldWord, newWord as string);
+          }
         }
       }
 
@@ -71,18 +75,18 @@ export class Uwuifier {
 
     // Split the string into words
     const words = sentence.split(` `);
+    const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
+
+    const faceThreshold = this._spacesModifier.facePercentage;
+    const actionThreshold = this._spacesModifier.actionPercentage + faceThreshold;
+    const stutterThreshold = this._spacesModifier.stutterPercentage + actionThreshold;
 
     words.forEach((wordValue, wordIndex) => {
       // TODO: use seed value
       const random = Math.random();
-      const pattern = new RegExp(/(?:https?|ftp):\/\/[\n\S]+/g);
 
       let insertedExpression = false;
       let removeCapital = false;
-
-      const faceThreshold = this._spacesModifier.facePercentage;
-      const actionThreshold = this._spacesModifier.actionPercentage + faceThreshold;
-      const stutterThreshold = this._spacesModifier.stutterPercentage + actionThreshold;
 
       if (random <= faceThreshold && this.faces.length) {
         // Add random face before the word
@@ -93,17 +97,14 @@ export class Uwuifier {
         uwuifiedSentence += ` ${getElement(this.actions)}`;
         insertedExpression = true;
       } else if (random <= stutterThreshold) {
-        // If first character is defined
-        if (wordValue[0]) {
-          // If string isn't a URL
-          if (!pattern.test(wordValue)) {
-            // Add stutter with a length between 0 and 2 length
-            const letter = wordValue[0];
-            const stutter = getRandomInt(0, 2);
+        // If first character is defined and string isn't a URL
+        if (wordValue[0] && !pattern.test(wordValue)) {
+          const letter = wordValue[0];
+          // Add stutter with a length between 0 and 2
+          const stutter = getRandomInt(0, 2);
 
-            for (let i = 0; i < stutter; i++) {
-              wordValue = `${letter}-${wordValue}`;
-            }
+          for (let i = 0; i < stutter; i++) {
+            wordValue = `${letter}-${wordValue}`;
           }
         }
       }
@@ -114,17 +115,17 @@ export class Uwuifier {
         if (wordValue[0] && wordValue[0] === wordValue[0].toUpperCase()) {
           if (wordIndex === 0) {
             // If it's the first word and has less than 50% upper case
-            if (getCapitalPercentage(wordValue) <= 0.5) removeCapital = true;
+            removeCapital = (getCapitalPercentage(wordValue) <= 0.5);
           }
 
           if (wordIndex !== 0) {
-            // If the previous word ends with punctuation continue with the logic
             const previousWord = words[wordIndex - 1];
             const previousWordLast = previousWord[previousWord.length - 1];
-
-            if (new RegExp('[.!?\\-]').test(previousWordLast)) {
+            const punctuationRegex = new RegExp('[.!?\\-]');
+            // If the previous word ends with punctuation continue with the logic
+            if (punctuationRegex.test(previousWordLast)) {
               // If the current word has less than 50% upper case
-              if (getCapitalPercentage(wordValue) <= 0.5) removeCapital = true;
+              removeCapital = (getCapitalPercentage(wordValue) <= 0.5);
             }
           }
         }
@@ -151,11 +152,9 @@ export class Uwuifier {
       const random = Math.random();
 
       // If there are exclimations replace them
-      if (pattern.test(wordValue)) {
-        if (random <= this._exclimationsModifier) {
-          wordValue = wordValue.replace(pattern, ``);
-          wordValue += getElement(this.exclimations);
-        }
+      if (pattern.test(wordValue) && random <= this._exclimationsModifier) {
+        wordValue = wordValue.replace(pattern, ``);
+        wordValue += getElement(this.exclimations);
       }
 
       // Reconstruct the string
