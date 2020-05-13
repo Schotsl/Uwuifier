@@ -1,16 +1,16 @@
 'use strict';
 
-export function getElement(array: string[]): string {
+export const getElement = (array: string[]): string => {
   return array[Math.floor(Math.random() * array.length)];
-}
+};
 
-export function getRandomInt(min: number, max: number) {
+export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
-export function getCapitalPercentage(input: string): number {
+export const getCapitalPercentage = (input: string): number => {
   let totalLetters = 0;
   let upperLetters = 0;
 
@@ -25,10 +25,10 @@ export function getCapitalPercentage(input: string): number {
   }
 
   return upperLetters / totalLetters;
-}
+};
 
-export function InitModifierParam() {
-  return function (target: { [key: string]: any }, key: string) {
+export const InitModifierParam = () => {
+  return (target: { [key: string]: any }, key: string) => {
     let value = target[key];
 
     const getter = () => value;
@@ -52,4 +52,4 @@ export function InitModifierParam() {
       configurable: true
     });
   };
-}
+};
