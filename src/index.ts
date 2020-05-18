@@ -29,10 +29,15 @@ export class Uwuifier {
   @InitModifierParam()
   private _exclimationsModifier: number = 1;
 
-  constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (typeof spacesModifierPara !== 'undefined') this._spacesModifier = spacesModifierPara;
-    if (typeof wordsModifierPara !== 'undefined') this._wordsModifier = wordsModifierPara;
-    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
+  constructor({
+    spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+    wordsModifier = 1,
+    exclimationsModifier = 1
+  }) {
+    this._spacesModifier = spacesModifier;
+    this._wordsModifier = wordsModifier;
+    this._exclimationsModifier = exclimationsModifier;
+    console.log(spacesModifier, wordsModifier, exclimationsModifier);
   }
 
   public uwuifyWords(sentence: string): string {
