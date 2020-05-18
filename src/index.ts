@@ -23,16 +23,20 @@ export class Uwuifier {
   ];
 
   @InitModifierParam()
-  private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  private _spacesModifier: spacesModifier;
   @InitModifierParam()
-  private _wordsModifier: number = 1;
+  private _wordsModifier: number;
   @InitModifierParam()
-  private _exclimationsModifier: number = 1;
+  private _exclimationsModifier: number;
 
-  constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (typeof spacesModifierPara !== 'undefined') this._spacesModifier = spacesModifierPara;
-    if (typeof wordsModifierPara !== 'undefined') this._wordsModifier = wordsModifierPara;
-    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
+  constructor({
+    spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+    wordsModifierParam = 1,
+    exclimationsModifierParam = 1
+  }) {
+    this._spacesModifier = spacesModifierParam;
+    this._wordsModifier = wordsModifierParam;
+    this._exclimationsModifier = exclimationsModifierParam;
   }
 
   public uwuifyWords(sentence: string): string {
