@@ -3,7 +3,7 @@ import { Uwuifier } from '../index';
 
 const uwuifier = new Uwuifier({
   spacesModifierParam: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
-  wordsModifierParam: 1, 
+  wordsModifierParam: 1,
   exclimationsModifierParam: 0
 });
 
