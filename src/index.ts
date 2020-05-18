@@ -29,10 +29,10 @@ export class Uwuifier {
   @InitModifierParam()
   private _exclimationsModifier: number = 1;
 
-  constructor(spacesModifierPara?: spacesModifier, wordsModifierPara?: number, exclimationsModifierPara?: number) {
-    if (typeof spacesModifierPara !== 'undefined') this._spacesModifier = spacesModifierPara;
-    if (typeof wordsModifierPara !== 'undefined') this._wordsModifier = wordsModifierPara;
-    if (typeof exclimationsModifierPara !== 'undefined') this._exclimationsModifier = exclimationsModifierPara;
+  constructor(spacesModifierParam?: spacesModifier | null, wordsModifierParam?: number | null, exclimationsModifierParam?: number | null) {
+    if (spacesModifierParam && typeof spacesModifierParam !== 'undefined') this._spacesModifier = spacesModifierParam;
+    if (wordsModifierParam && typeof wordsModifierParam !== 'undefined') this._wordsModifier = wordsModifierParam;
+    if (exclimationsModifierParam && typeof exclimationsModifierParam !== 'undefined') this._exclimationsModifier = exclimationsModifierParam;
   }
 
   public uwuifyWords(sentence: string): string {
