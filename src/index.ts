@@ -33,10 +33,14 @@ export class Uwuifier {
     spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
     wordsModifierParam = 1,
     exclimationsModifierParam = 1
+  } = {
+    spacesModifierParam: { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+    wordsModifierParam: 1,
+    exclimationsModifierParam: 1
   }) {
-    this._spacesModifier = spacesModifierParam;
-    this._wordsModifier = wordsModifierParam;
-    this._exclimationsModifier = exclimationsModifierParam;
+    this._spacesModifier = spacesModifierParam || { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+    this._wordsModifier = wordsModifierParam || 1;
+    this._exclimationsModifier = exclimationsModifierParam || 1;
   }
 
   public uwuifyWords(sentence: string): string {
