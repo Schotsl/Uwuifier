@@ -37,7 +37,6 @@ export class Uwuifier {
     this._spacesModifier = spacesModifier;
     this._wordsModifier = wordsModifier;
     this._exclimationsModifier = exclimationsModifier;
-    console.log(spacesModifier, wordsModifier, exclimationsModifier);
   }
 
   public uwuifyWords(sentence: string): string {
