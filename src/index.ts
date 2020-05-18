@@ -23,11 +23,11 @@ export class Uwuifier {
   ];
 
   @InitModifierParam()
-  private _spacesModifier: spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  private _spacesModifier: spacesModifier;
   @InitModifierParam()
-  private _wordsModifier: number = 1;
+  private _wordsModifier: number;
   @InitModifierParam()
-  private _exclimationsModifier: number = 1;
+  private _exclimationsModifier: number;
 
   constructor({
     spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
