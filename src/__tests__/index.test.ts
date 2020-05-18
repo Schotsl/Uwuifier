@@ -2,9 +2,9 @@ import { getElement } from '../utils';
 import { Uwuifier } from '../index';
 
 const uwuifier = new Uwuifier({
-  spacesModifier: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
-  wordsModifier: 1, 
-  exclimationsModifier: 0
+  spacesModifierParam: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
+  wordsModifierParam: 1, 
+  exclimationsModifierParam: 0
 });
 
 const senteces = [

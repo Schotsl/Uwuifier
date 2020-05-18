@@ -30,13 +30,13 @@ export class Uwuifier {
   private _exclimationsModifier: number = 1;
 
   constructor({
-    spacesModifier = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
-    wordsModifier = 1,
-    exclimationsModifier = 1
+    spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+    wordsModifierParam = 1,
+    exclimationsModifierParam = 1
   }) {
-    this._spacesModifier = spacesModifier;
-    this._wordsModifier = wordsModifier;
-    this._exclimationsModifier = exclimationsModifier;
+    this._spacesModifier = spacesModifierParam;
+    this._wordsModifier = wordsModifierParam;
+    this._exclimationsModifier = exclimationsModifierParam;
   }
 
   public uwuifyWords(sentence: string): string {
