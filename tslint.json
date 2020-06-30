@@ -1,7 +1,7 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "extends": ["tslint:recommended"],
   "rules": {
-    "class-name": false,
-    "no-console": [false]
+    "no-console": [false],
+    "no-bitwise": false
   }
 }

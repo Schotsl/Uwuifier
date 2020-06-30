@@ -2,7 +2,7 @@
 
 import { getElement, getRandomInt, getCapitalPercentage, InitModifierParam, isUri } from './utils';
 
-interface spacesModifier {
+interface SpacesModifier {
   facePercentage: number;
   actionPercentage: number;
   stutterPercentage: number;
@@ -23,22 +23,28 @@ export class Uwuifier {
   ];
 
   @InitModifierParam()
-  private _spacesModifier: spacesModifier;
+  private _spacesModifier: SpacesModifier;
   @InitModifierParam()
   private _wordsModifier: number;
   @InitModifierParam()
   private _exclimationsModifier: number;
 
-  constructor({
-    spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
-    wordsModifierParam = 1,
-    exclimationsModifierParam = 1
-  } = {
-    spacesModifierParam: { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
-    wordsModifierParam: 1,
-    exclimationsModifierParam: 1
-  }) {
-    this._spacesModifier = spacesModifierParam || { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 };
+  constructor(
+    {
+      spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+      wordsModifierParam = 1,
+      exclimationsModifierParam = 1
+    } = {
+      spacesModifierParam: { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
+      wordsModifierParam: 1,
+      exclimationsModifierParam: 1
+    }
+  ) {
+    this._spacesModifier = spacesModifierParam || {
+      facePercentage: 0.05,
+      actionPercentage: 0.05,
+      stutterPercentage: 0.1
+    };
     this._wordsModifier = wordsModifierParam || 1;
     this._exclimationsModifier = exclimationsModifierParam || 1;
   }
