@@ -1,6 +1,7 @@
 'use strict';
 
-import { getElement, getRandomInt, getCapitalPercentage, InitModifierParam, isUri } from './utils';
+import { getCapitalPercentage, InitModifierParam, isUri } from './utils';
+import { Seed } from './seed';
 
 interface SpacesModifier {
   facePercentage: number;
@@ -67,10 +68,10 @@ export class Uwuifier {
       // If word is a URI don't uwuifiy it
       if (!isUri(wordValue)) {
         for (const [oldWord, newWord] of uwuMap) {
-          const random = Math.random();
+          const seed = new Seed(wordValue);
 
           // Generate a random value for every map so words will be partly uwuified instead of not at all
-          if (random <= this._wordsModifier) {
+          if (seed.random() <= this._wordsModifier) {
             wordValue = wordValue.replace(oldWord, newWord as string);
           }
         }
@@ -94,26 +95,26 @@ export class Uwuifier {
     const stutterThreshold = this._spacesModifier.stutterPercentage + actionThreshold;
 
     words.forEach((wordValue, wordIndex) => {
-      // TODO: use seed value
-      const random = Math.random();
+      const seed = new Seed(wordValue);
+      const random = seed.random();
 
       let insertedExpression = false;
       let removeCapital = false;
 
       if (random <= faceThreshold && this.faces.length) {
         // Add random face before the word
-        uwuifiedSentence += ` ${getElement(this.faces)}`;
+        uwuifiedSentence += ` ${this.faces[seed.random(0, this.faces.length)]}`;
         insertedExpression = true;
       } else if (random <= actionThreshold && this.actions.length) {
         // Add random action before the word
-        uwuifiedSentence += ` ${getElement(this.actions)}`;
+        uwuifiedSentence += ` ${this.actions[seed.random(0, this.actions.length)]}`;
         insertedExpression = true;
       } else if (random <= stutterThreshold) {
         // If first character is defined and string isn't a URI
         if (wordValue[0] && !isUri(wordValue)) {
           const letter = wordValue[0];
           // Add stutter with a length between 0 and 2
-          const stutter = getRandomInt(0, 2);
+          const stutter = seed.random(0, 2);
 
           for (let i = 0; i < stutter; i++) {
             wordValue = `${letter}-${wordValue}`;
@@ -161,12 +162,12 @@ export class Uwuifier {
     const pattern = new RegExp('[?!]+$');
 
     words.forEach((wordValue, wordIndex) => {
-      const random = Math.random();
+      const seed = new Seed(wordValue);
 
       // If there are exclimations replace them
-      if (pattern.test(wordValue) && random <= this._exclimationsModifier) {
+      if (pattern.test(wordValue) && seed.random() <= this._exclimationsModifier) {
         wordValue = wordValue.replace(pattern, ``);
-        wordValue += getElement(this.exclimations);
+        wordValue += this.exclimations[seed.random(0, this.exclimations.length)];
       }
 
       // Reconstruct the string
