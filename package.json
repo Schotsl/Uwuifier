@@ -40,11 +40,13 @@
     "typescript": "^3.9.2"
   },
   "scripts": {
-    "test": "jest --config jestconfig.json",
     "lint": "tslint -p tsconfig.json",
-    "serve": "nodemon",
-    "build": "npm run lint && npm run format && npm test",
+    "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\"",
+
+    "serve": "nodemon",
+    "build": "npm run lint && npm run format && npm run test",
+
     "prepare": "npm run build"
   },
   "nodemonConfig": {
