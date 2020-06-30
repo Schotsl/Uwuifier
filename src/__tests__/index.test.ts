@@ -1,5 +1,6 @@
 import { getElement } from '../utils';
 import { Uwuifier } from '../index';
+import { Seed } from '../seed';
 
 const uwuifier = new Uwuifier({
   spacesModifierParam: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
@@ -39,4 +40,22 @@ test('Uwufy a sentence', () => {
 
   expect(typeof uwufiedSentence).toBe('string');
   expect(uwufiedSentence.length).toBeGreaterThanOrEqual(normalSentence.length);
+});
+
+test('Check consistency of number generator', () => {
+  const firstSeed = new Seed('test');
+  const firstRandom = firstSeed.random();
+
+  const secondSeed = new Seed('test');
+  const secondRandom = secondSeed.random();
+
+  expect(firstRandom).toEqual(secondRandom);
+});
+
+test('Check consistency of uwuified sentence', () => {
+  const normalSentence = getElement(senteces);
+  const firstSentence = uwuifier.uwuifySentence(normalSentence);
+  const secondSentence = uwuifier.uwuifySentence(normalSentence);
+
+  expect(firstSentence).toEqual(secondSentence);
 });
