@@ -8,6 +8,6 @@
     "experimentalDecorators": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"],
   "types": ["@types/jest"]
 }
