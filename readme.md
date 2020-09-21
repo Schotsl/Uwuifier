@@ -21,6 +21,7 @@ This package uses a seeded random generator to ensure al results will be the sam
 - [Functions](#functions)
 - [License](#license)
 
+&nbsp;
 
 # Example
 
@@ -72,6 +73,8 @@ console.log(uwuifier.uwuifySentence('This package is amazing!");
 
 &nbsp;
 
+# Constructor
+
 ### Default values
 
 *So this is what the default constructer would look like if you we're to write it out whole*
@@ -96,8 +99,6 @@ The 'uwuifySentence' function combines all three other functions ('uwuifyWords',
 **Uwuified**:
 > *sees buldge* the wandom sentence genyewatow g-genyewated a wandom sentence about a wandom sentence?!!
 
-&nbsp;
-  
 ### `uwuifyWords(string)`
 
 The `uwuifyWords` function only runs a Regex on certain characters, by lowering the `wordsModifier` value from the default 1 only a certain percentage of letters will be modified, a value of 0.9 causes only 90% of matching letters to be modified.
@@ -108,8 +109,6 @@ The `uwuifyWords` function only runs a Regex on certain characters, by lowering 
 **Uwuified (`uwuifyWord`)**:
 > The wandom sentence genyewatow genyewated a wandom sentence about a wandom sentence!
 
-&nbsp;
-
 ### `uwuifySpaces(string)`
 
 The `uwuifyWords` function does most of the work! It adds random s-s-stutters to certain words, adds *notices buldge* actions in between words, and adds random faces in between words UwU. It should be noted that the default actions, faces, and exclamations can be modified by accessing and changing the public properties `actions`, `faces`, and `exclamations`.
@@ -119,8 +118,6 @@ The `uwuifyWords` function does most of the work! It adds random s-s-stutters to
 
 **Uwuified (`uwuifySpaces`)**:
 > *sees buldge* the :3 random sentence generator g-generated a :3 random sentence about a :3 random sentence!
-
-&nbsp;
 
 ### `uwuifyExclimations(string)`
 
