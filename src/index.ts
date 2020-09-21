@@ -11,7 +11,7 @@ interface SpacesModifier {
 
 export class Uwuifier {
   public faces: string[] = [`(・\`ω´・)`, `;;w;;`, `owo`, `UwU`, `>w<`, `^w^`, `ÚwÚ`, `:3`, `x3`];
-  public exclimations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
+  public exclamations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
   public actions: string[] = [
     `*blushes*`,
     `*whispers to self*`,
@@ -28,17 +28,17 @@ export class Uwuifier {
   @InitModifierParam()
   private _wordsModifier: number;
   @InitModifierParam()
-  private _exclimationsModifier: number;
+  private _exclamationsModifier: number;
 
   constructor(
     {
       spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
       wordsModifierParam = 1,
-      exclimationsModifierParam = 1
+      exclamationsModifierParam = 1
     } = {
       spacesModifierParam: { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
       wordsModifierParam: 1,
-      exclimationsModifierParam: 1
+      exclamationsModifierParam: 1
     }
   ) {
     this._spacesModifier = spacesModifierParam || {
@@ -47,7 +47,7 @@ export class Uwuifier {
       stutterPercentage: 0.1
     };
     this._wordsModifier = wordsModifierParam || 1;
-    this._exclimationsModifier = exclimationsModifierParam || 1;
+    this._exclamationsModifier = exclamationsModifierParam || 1;
   }
 
   public uwuifyWords(sentence: string): string {
@@ -154,7 +154,7 @@ export class Uwuifier {
     return uwuifiedSentence;
   }
 
-  public uwuifyExclimations(sentence: string): string {
+  public uwuifyExclamations(sentence: string): string {
     let uwuifiedSentence = ``;
 
     // Split the string into words
@@ -164,10 +164,10 @@ export class Uwuifier {
     words.forEach((wordValue, wordIndex) => {
       const seed = new Seed(wordValue);
 
-      // If there are exclimations replace them
-      if (pattern.test(wordValue) && seed.random() <= this._exclimationsModifier) {
+      // If there are exclamations replace them
+      if (pattern.test(wordValue) && seed.random() <= this._exclamationsModifier) {
         wordValue = wordValue.replace(pattern, ``);
-        wordValue += this.exclimations[Math.round(seed.random(0, this.exclimations.length - 1))];
+        wordValue += this.exclamations[Math.round(seed.random(0, this.exclamations.length - 1))];
       }
 
       // Reconstruct the string
@@ -181,7 +181,7 @@ export class Uwuifier {
     let uwuifiedString = sentence;
 
     uwuifiedString = this.uwuifyWords(uwuifiedString);
-    uwuifiedString = this.uwuifyExclimations(uwuifiedString);
+    uwuifiedString = this.uwuifyExclamations(uwuifiedString);
     uwuifiedString = this.uwuifySpaces(uwuifiedString);
 
     return uwuifiedString;

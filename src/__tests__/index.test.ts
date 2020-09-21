@@ -5,7 +5,7 @@ import { Seed } from '../seed';
 const uwuifier = new Uwuifier({
   spacesModifierParam: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
   wordsModifierParam: 1,
-  exclimationsModifierParam: 0
+  exclamationsModifierParam: 0
 });
 
 const senteces = [
