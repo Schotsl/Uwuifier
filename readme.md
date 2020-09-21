@@ -1,12 +1,26 @@
-# Uwuifier
+<a href="https://aimeos.org/">
+    <img src="https://uwuifier.com/logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
+</a>
 
-This very lightweight package allows you to uwuify any sentence or word (excluding URL's) with many configurable parameters while giving access to many vewy kawaii sentences and faces (**this package is made in and supports TypeScript!**)
+Uwuifier
+======================
+[![NPM Version][npm-image]][npm-url]
+
+This very lightweight package allows you to uwuify any sentence or word (excluding URL's) with many configurable parameters while giving access to many vewy kawaii sentences and faces! You can view a demo on https://uwuifier.com
 
 This package uses a seeded random generator to ensure al results will be the same, the package also analyses sentence casing to ensure letter casing will still look correct even when the string is uwuified. If you've got any more suggestions on how to improve this package please create an issue!
 
-[![NPM Version][npm-image]][npm-url]
-
 &nbsp;
+
+# Table of content
+
+- [Example](#example)
+- [Quick start](#quick-start)
+    - [Deno](#deno)
+    - [Node](#node)
+- [Functions](#functions)
+- [License](#license)
+
 
 # Example
 
@@ -58,26 +72,6 @@ console.log(uwuifier.uwuifySentence('This package is amazing!");
 
 &nbsp;
 
-# Parameters
-
-### The Uwuifier constructor takes these three arguments in the listed order
-
-**All of these constructor parameters must be between or equal to 0 and 1, even the array must have a combined value between or equal to 0 and 1. Every parameter except the spaces' modifier already has a default value of 1 to maximize the UwU factor!**
-
-| Name                  | Type   | Description                                                    |
-| :-------------------- | :----- | :------------------------------------------------------------- |
-| Spaces modifier       | array  |  I've elaborated on this array description below               |
-| Words modifier        | float  |  This float determines what percentage of letters get uwuified |
-| Exclamations modifier | float  |  This float determines how often exclimations will be placed   |
-
-
-### Spaces modifier
-
-The spaces modifier is a complicated parameter, it's an array which must have a fixed length of 3 that has a combined value between or equal to 0 and 1. This is what the array should look like `[facePercentage, actionPercentage, stutterPercentage]`. At every whitespace we will generate a random seeded value which determines what we will insert, a UwU face, an 'action' such as \*notices buldge\* or some s-s-stutter
-
-So let's say you passed an array with these values: `[0, 0, 1]` would result in a string like the one quoted below, this is because we've increased the stutter percentage to 100% and moved every other probability to 0%
-> "F-from n-n-ow o-on e-e-every w-word s-s-stutters"
-
 ### Default values
 
 *So this is what the default constructer would look like if you we're to write it out whole*
@@ -90,18 +84,53 @@ const uwuifier = new Uwuifier(1, 1, [0.05, 0.05, 0.1])
 
 # Functions
 
-The Uwuifiers package contains 3 public functions: `uwuifyWords`, `uwuifySpaces`, `uwuifyExclimations` & `uwuifySentence`
+**Warning**: All functions besides the default 'uwuifySentence' function might mangle a URL if it includes exclamations, spaces, or certain letters. Please also note that any other data will be mangled, such as phone, names, addresses, or any credentials.
 
-### **`uwuifySentence(string)`**
+## **`uwuifySentence(string)`**
 
-This function combines all other functions and is probably the one you want too use
+The 'uwuifySentence' function combines all three other functions ('uwuifyWords', 'uwuifySpaces' and 'uwuifyExclimations') into one, it also filters out any URL's. This is also why it's the easiest function to quickly get you started on your weeaboo journey.
 
+**Normal**:
+> The random sentence generator generated a random sentence about a random sentence.
+
+**Uwuified**:
+> *sees buldge* the wandom sentence genyewatow g-genyewated a wandom sentence about a wandom sentence?!!
+
+&nbsp;
+  
 ### `uwuifyWords(string)`
+
+The `uwuifyWords` function only runs a Regex on certain characters, by lowering the `wordsModifier` value from the default 1 only a certain percentage of letters will be modified, a value of 0.9 causes only 90% of matching letters to be modified.
+
+**Normal**:
+> The random sentence generator generated a random sentence about a random sentence.
+
+**Uwuified (`uwuifyWord`)**:
+> The wandom sentence genyewatow genyewated a wandom sentence about a wandom sentence!
+
+&nbsp;
 
 ### `uwuifySpaces(string)`
 
+The `uwuifyWords` function does most of the work! It adds random s-s-stutters to certain words, adds *notices buldge* actions in between words, and adds random faces in between words UwU. It should be noted that the default actions, faces, and exclamations can be modified by accessing and changing the public properties `actions`, `faces`, and `exclamations`.
+
+**Normal**:
+> The random sentence generator generated a random sentence about a random sentence.
+
+**Uwuified (`uwuifySpaces`)**:
+> *sees buldge* the :3 random sentence generator g-generated a :3 random sentence about a :3 random sentence!
+
+&nbsp;
+
 ### `uwuifyExclimations(string)`
 
+The `uwuifyExclimations` function only replaces exclamations with more 'expressive' exclamations. It should be noted that the default actions, faces, and exclamations can be modified by accessing and changing the public properties `actions`, `faces`, and `exclamations`.
+
+**Normal**:
+> The random sentence generator generated a random sentence about a random sentence.
+
+**Uwuified (`uwuifyExclimations`)**:
+> The random sentence generator generated a random sentence about a random sentence?!!
 
 &nbsp;
 
