@@ -103,18 +103,18 @@ export class Uwuifier {
 
       if (random <= faceThreshold && this.faces.length) {
         // Add random face before the word
-        uwuifiedSentence += ` ${this.faces[seed.random(0, this.faces.length)]}`;
+        uwuifiedSentence += ` ${this.faces[Math.round(seed.random(0, this.faces.length - 1))]}`;
         insertedExpression = true;
       } else if (random <= actionThreshold && this.actions.length) {
         // Add random action before the word
-        uwuifiedSentence += ` ${this.actions[seed.random(0, this.actions.length)]}`;
+        uwuifiedSentence += ` ${this.actions[Math.round(seed.random(0, this.actions.length - 1))]}`;
         insertedExpression = true;
       } else if (random <= stutterThreshold) {
         // If first character is defined and string isn't a URI
         if (wordValue[0] && !isUri(wordValue)) {
           const letter = wordValue[0];
           // Add stutter with a length between 0 and 2
-          const stutter = seed.random(0, 2);
+          const stutter = Math.round(seed.random(0, 2));
 
           for (let i = 0; i < stutter; i++) {
             wordValue = `${letter}-${wordValue}`;
@@ -167,7 +167,7 @@ export class Uwuifier {
       // If there are exclimations replace them
       if (pattern.test(wordValue) && seed.random() <= this._exclimationsModifier) {
         wordValue = wordValue.replace(pattern, ``);
-        wordValue += this.exclimations[seed.random(0, this.exclimations.length)];
+        wordValue += this.exclimations[Math.round(seed.random(0, this.exclimations.length - 1))];
       }
 
       // Reconstruct the string
