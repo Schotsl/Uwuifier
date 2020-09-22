@@ -39,11 +39,7 @@ export class Uwuifier {
   private _exclamationsModifier: number;
 
   constructor(
-    {
-      spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 },
-      words = 1,
-      exclamations = 1
-    } = {
+    { spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 }, words = 1, exclamations = 1 } = {
       spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
       words: 1,
       exclamations: 1
@@ -61,20 +57,22 @@ export class Uwuifier {
   public uwuifyWords(sentence: string): string {
     const words = sentence.split(` `);
 
-    const uwuifiedSentence = words.map((word) => {
-      if (isUri(word)) return word;
+    const uwuifiedSentence = words
+      .map((word) => {
+        if (isUri(word)) return word;
 
-      const seed = new Seed(word);
+        const seed = new Seed(word);
 
-      for (const [oldWord, newWord] of this.uwuMap) {
-        // Generate a random value for every map so words will be partly uwuified instead of not at all
-        if (seed.random() > this._wordsModifier) continue;
+        for (const [oldWord, newWord] of this.uwuMap) {
+          // Generate a random value for every map so words will be partly uwuified instead of not at all
+          if (seed.random() > this._wordsModifier) continue;
 
-        word = word.replace(oldWord, newWord as string);
-      }
+          word = word.replace(oldWord, newWord as string);
+        }
 
-      return word;
-    }).join(' ');
+        return word;
+      })
+      .join(' ');
 
     return uwuifiedSentence;
   }
@@ -86,49 +84,51 @@ export class Uwuifier {
     const actionThreshold = this._spacesModifier.actions + faceThreshold;
     const stutterThreshold = this._spacesModifier.stutters + actionThreshold;
 
-    const uwuifiedSentence = words.map((word, index) => {
-      const seed = new Seed(word);
-      const random = seed.random();
+    const uwuifiedSentence = words
+      .map((word, index) => {
+        const seed = new Seed(word);
+        const random = seed.random();
 
-      const firstCharacter = word[0];
+        const firstCharacter = word[0];
 
-      if (random <= faceThreshold && this.faces) {
-        // Add random face before the word
-        word += ' ' + this.faces[seed.randomInt(0, this.faces.length - 1)];
-        checkCapital();
-      } else if (random <= actionThreshold && this.actions) {
-        // Add random action before the word
-        word += ' ' + this.actions[seed.randomInt(0, this.actions.length - 1)];
-        checkCapital();
-      } else if (random <= stutterThreshold && !isUri(word)) {
-        // Add stutter with a length between 0 and 2
-        const stutter = seed.randomInt(0, 2);
+        if (random <= faceThreshold && this.faces) {
+          // Add random face before the word
+          word += ' ' + this.faces[seed.randomInt(0, this.faces.length - 1)];
+          checkCapital();
+        } else if (random <= actionThreshold && this.actions) {
+          // Add random action before the word
+          word += ' ' + this.actions[seed.randomInt(0, this.actions.length - 1)];
+          checkCapital();
+        } else if (random <= stutterThreshold && !isUri(word)) {
+          // Add stutter with a length between 0 and 2
+          const stutter = seed.randomInt(0, 2);
 
-        return (firstCharacter + '-').repeat(stutter) + word;
-      }
-
-      function checkCapital() {
-        // Check if we should remove the first capital letter
-        if (firstCharacter !== firstCharacter.toUpperCase()) return;
-        // if word has higher than 50% upper case
-        if (getCapitalPercentage(word) > 0.5) return;
-
-        // If it's the first word
-        if (index === 0) {
-          // Remove the first capital letter
-          word = firstCharacter.toLowerCase() + word.slice(1);
-        } else {
-          const previousWord = words[index - 1];
-          const previousWordLastChar = previousWord[previousWord.length - 1];
-          const prevWordEndsWithPunctuation = new RegExp('[.!?\\-]').test(previousWordLastChar);
-
-          if (!prevWordEndsWithPunctuation) return;
-          word = firstCharacter.toLowerCase() + word.slice(1);
+          return (firstCharacter + '-').repeat(stutter) + word;
         }
-      }
 
-      return word;
-    }).join(' ');
+        function checkCapital() {
+          // Check if we should remove the first capital letter
+          if (firstCharacter !== firstCharacter.toUpperCase()) return;
+          // if word has higher than 50% upper case
+          if (getCapitalPercentage(word) > 0.5) return;
+
+          // If it's the first word
+          if (index === 0) {
+            // Remove the first capital letter
+            word = firstCharacter.toLowerCase() + word.slice(1);
+          } else {
+            const previousWord = words[index - 1];
+            const previousWordLastChar = previousWord[previousWord.length - 1];
+            const prevWordEndsWithPunctuation = new RegExp('[.!?\\-]').test(previousWordLastChar);
+
+            if (!prevWordEndsWithPunctuation) return;
+            word = firstCharacter.toLowerCase() + word.slice(1);
+          }
+        }
+
+        return word;
+      })
+      .join(' ');
 
     return uwuifiedSentence;
   }
@@ -137,17 +137,19 @@ export class Uwuifier {
     const words = sentence.split(` `);
     const pattern = new RegExp('[?!]+$');
 
-    const uwuifiedSentence = words.map((word) => {
-      const seed = new Seed(word);
+    const uwuifiedSentence = words
+      .map((word) => {
+        const seed = new Seed(word);
 
-      // If there are no exclimations return
-      if (!pattern.test(word) || seed.random() > this._exclamationsModifier) return word;
+        // If there are no exclimations return
+        if (!pattern.test(word) || seed.random() > this._exclamationsModifier) return word;
 
-      word = word.replace(pattern, ``);
-      word += this.exclamations[seed.randomInt(0, this.exclamations.length - 1)];
+        word = word.replace(pattern, ``);
+        word += this.exclamations[seed.randomInt(0, this.exclamations.length - 1)];
 
-      return word;
-    }).join(' ');
+        return word;
+      })
+      .join(' ');
 
     return uwuifiedSentence;
   }
