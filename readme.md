@@ -48,7 +48,7 @@ import { Uwuifier } from 'https://deno.land/x/uwuifier/src/index.ts';
 const uwuifier = new Uwuifier();
 
 // Uwuifiy a sentence
-console.log(uwuifier.uwuifySentence('This package is amazing!');
+console.log(uwuifier.uwuifySentence('This package is amazing!'));
 ```
 
 ## JavaScript
@@ -69,7 +69,7 @@ import { Uwuifier } from 'Uwuifier';
 const uwuifier = new Uwuifier();
 
 // Uwuifiy a sentence
-console.log(uwuifier.uwuifySentence('This package is amazing!');
+console.log(uwuifier.uwuifySentence('This package is amazing!'));
 ```
 
 &nbsp;
