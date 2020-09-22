@@ -65,11 +65,11 @@ export class Uwuifier {
       if (isUri(word)) return word;
 
       const seed = new Seed(word);
-      
+
       for (const [oldWord, newWord] of this.uwuMap) {
         // Generate a random value for every map so words will be partly uwuified instead of not at all
         if (seed.random() > this._wordsModifier) continue;
-          
+
         word = word.replace(oldWord, newWord as string);
       }
 
@@ -113,7 +113,7 @@ export class Uwuifier {
         // if word has higher than 50% upper case
         if (getCapitalPercentage(word) > 0.5) return;
 
-        // If it's the first word 
+        // If it's the first word
         if (index === 0) {
           // Remove the first capital letter
           word = firstCharacter.toLowerCase() + word.slice(1);
@@ -139,10 +139,10 @@ export class Uwuifier {
 
     const uwuifiedSentence = words.map((word) => {
       const seed = new Seed(word);
-    
+
       // If there are no exclimations return
       if (!pattern.test(word) || seed.random() > this._exclamationsModifier) return word;
-      
+
       word = word.replace(pattern, ``);
       word += this.exclamations[seed.randomInt(0, this.exclamations.length - 1)];
 
