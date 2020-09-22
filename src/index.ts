@@ -4,9 +4,9 @@ import { getCapitalPercentage, InitModifierParam, isUri } from './utils';
 import { Seed } from './seed';
 
 interface SpacesModifier {
-  facePercentage: number;
-  actionPercentage: number;
-  stutterPercentage: number;
+  faces: number;
+  actions: number;
+  stutters: number;
 }
 
 export class Uwuifier {
@@ -32,22 +32,22 @@ export class Uwuifier {
 
   constructor(
     {
-      spacesModifierParam = { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
-      wordsModifierParam = 1,
-      exclamationsModifierParam = 1
+      spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 },
+      words = 1,
+      exclamations = 1
     } = {
-      spacesModifierParam: { facePercentage: 0.05, actionPercentage: 0.05, stutterPercentage: 0.1 },
-      wordsModifierParam: 1,
-      exclamationsModifierParam: 1
+      spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
+      words: 1,
+      exclamations: 1
     }
   ) {
-    this._spacesModifier = spacesModifierParam || {
-      facePercentage: 0.05,
-      actionPercentage: 0.05,
-      stutterPercentage: 0.1
+    this._spacesModifier = spaces || {
+      faces: 0.05,
+      actions: 0.075,
+      stutters: 0.1
     };
-    this._wordsModifier = wordsModifierParam || 1;
-    this._exclamationsModifier = exclamationsModifierParam || 1;
+    this._wordsModifier = words || 1;
+    this._exclamationsModifier = exclamations || 1;
   }
 
   public uwuifyWords(sentence: string): string {
@@ -90,9 +90,9 @@ export class Uwuifier {
     // Split the string into words
     const words = sentence.split(` `);
 
-    const faceThreshold = this._spacesModifier.facePercentage;
-    const actionThreshold = this._spacesModifier.actionPercentage + faceThreshold;
-    const stutterThreshold = this._spacesModifier.stutterPercentage + actionThreshold;
+    const faceThreshold = this._spacesModifier.faces;
+    const actionThreshold = this._spacesModifier.actions + faceThreshold;
+    const stutterThreshold = this._spacesModifier.stutters + actionThreshold;
 
     words.forEach((wordValue, wordIndex) => {
       const seed = new Seed(wordValue);

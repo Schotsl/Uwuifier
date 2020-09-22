@@ -3,9 +3,9 @@ import { Uwuifier } from '../index';
 import { Seed } from '../seed';
 
 const uwuifier = new Uwuifier({
-  spacesModifierParam: { facePercentage: 0.3, actionPercentage: 0.05, stutterPercentage: 0.1 },
-  wordsModifierParam: 1,
-  exclamationsModifierParam: 0
+  spaces: { faces: 0.3, actions: 0.05, stutters: 0.1 },
+  words: 1,
+  exclamations: 0
 });
 
 const senteces = [
