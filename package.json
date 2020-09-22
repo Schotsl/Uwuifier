@@ -34,6 +34,7 @@
     "jest": "^25.5.4",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
+    "ts": "^0.2.2",
     "ts-jest": "^25.5.1",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
@@ -45,7 +46,6 @@
     "serve": "nodemon",
     "build": "npm run lint && npm run format && npm run test && ts",
     "format": "prettier --write \"src/**/*.ts\"",
-
     "prepare": "npm run build"
   },
   "nodemonConfig": {
