@@ -94,7 +94,7 @@ const uwuifier = new Uwuifier({
  The `spaces` property is the most advanced property, at every space we can either: add an action to the string \*notices buldge\*, add a s-s-stutter to the start of the word, or we can add a face UwU. This means that the combined value of all the three children properties must be equal or below 1. It should be noted that the default actions, faces, and exclamations can be modified by accessing and changing the public properties `actions`, `faces`, and `exclamations`.
  
  #### words
- The `words` property affects what percentage of Regex matches get uwuified, the default value is 1 which means that every letter that matches the Regex gets replaced. To gain a deeper understanding of what this Regex does please take a look at the `uwuifyWords` function in the documentation.
+ The `words` property affects what percentage of Regex matches get uwuified, the default value is 1 which means that every character that matches the Regex gets replaced. To gain a deeper understanding of what this Regex does please take a look at the `uwuifyWords` function in the documentation.
  
 #### exclamations
 The `exclamations` property determines what percentage of exclamations get replaced with a more 'expressive' exclamation from our internal array. It should be noted that the default actions, faces, and exclamations can be modified by accessing and changing the public properties `actions`, `faces`, and `exclamations`.
@@ -103,7 +103,7 @@ The `exclamations` property determines what percentage of exclamations get repla
 
 # Functions
 
-**Warning**: All functions besides the default `uwuifySentence` function function might mangle a URL if it includes exclamations, spaces, or certain letters. It should also be noted that every function in this package could mangle other data such as phone-numbers, names, addresses, or any other credentials.
+**Warning**: All functions besides the default `uwuifySentence` function function might mangle a URL if it includes exclamations, spaces, or certain characters. It should also be noted that every function in this package could mangle other data such as phone-numbers, names, addresses, or any other credentials.
 
 ## **`uwuifySentence(string)`**
 
@@ -119,7 +119,7 @@ The `uwuifySentence` function combines all three other functions (`uwuifyWords`,
 
 ### `uwuifyWords(string)`
 
-The `uwuifyWords` function only runs a Regex on certain characters, by lowering the `wordsModifier` value from the default 1 only a certain percentage of letters will be modified, a value of 0.9 causes only 90% of matching characters to be modified.
+The `uwuifyWords` function only runs a Regex on certain characters, by lowering the `wordsModifier` value from the default 1 only a certain percentage of characters will be modified, a value of 0.9 causes only 90% of matching characters to be modified.
 
 **Normal**:
 > The random sentence generator generated a random sentence about a random sentence.
