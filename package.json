@@ -1,7 +1,6 @@
 {
   "name": "uwuifier",
-  "version": "1.1.0",
-  "description": "This very lightweight package allows you to uwuify any sentence or word (excluding URL's) with many configurable parameters while giving you access to many vewy kawaii sentences and faces",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "files": [
@@ -9,25 +8,26 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Schotsl/uwufier.git"
+    "url": "git+https://github.com/Schotsl/uwuifier.git"
   },
-  "author": "David Brands & Sjors van Holst",
+  "author": "Sjors van Holst",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Schotsl/uwufier/issues"
+    "url": "https://github.com/Schotsl/uwuifier/issues"
   },
-  "homepage": "https://github.com/Schotsl/uwufier#readme",
+  "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "keywords": [
-    "uwu",
-    "UwU",
-    "UWU",
-    "owo",
+    "Uwu",
     "OwO",
-    "OWO",
-    "anime",
+    "Emoji",
     "Anime",
-    "kawaii",
-    "Kawaii"
+    "Meme",
+    "Kawaii",
+    "Emote",
+    "Memes",
+    "Nuzzles",
+    "Uwuifier",
+    "Weeaboo"
   ],
   "devDependencies": {
     "@types/jest": "^25.2.3",
@@ -42,12 +42,10 @@
   "scripts": {
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json",
+    "serve": "nodemon",
     "format": "prettier --write \"src/**/*.ts\"",
 
-    "serve": "nodemon",
     "build": "npm run lint && npm run format && npm run test",
-
-    "prepare": "npm run build"
   },
   "nodemonConfig": {
     "ignore": [
