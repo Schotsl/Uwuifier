@@ -54,6 +54,10 @@ export class Seed {
     return this.generateRange(this.sfc32(), min, max);
   }
 
+  public randomInt(min: number = 0, max: number = 1): number {
+    return Math.round(this.random(min, max));
+  }
+
   public sfc32(min: number = 0, max: number = 1): number {
     let a = this._seeder();
     let b = this._seeder();
