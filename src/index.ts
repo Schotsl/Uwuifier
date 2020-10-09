@@ -44,14 +44,15 @@ export class Uwuifier {
       words: 1,
       exclamations: 1
     }
-  ) {
-    this._spacesModifier = spaces || {
+  )
+  {
+    this._spacesModifier = typeof(spaces) !== `undefined` ? spaces : {
       faces: 0.05,
       actions: 0.075,
       stutters: 0.1
     };
-    this._wordsModifier = words || 1;
-    this._exclamationsModifier = exclamations || 1;
+    this._wordsModifier = typeof(words) !== `undefined` ? words : 1;
+    this._exclamationsModifier = typeof(exclamations) !== `undefined` ? exclamations : 1;
   }
 
   public uwuifyWords(sentence: string): string {
@@ -141,7 +142,7 @@ export class Uwuifier {
       .map((word) => {
         const seed = new Seed(word);
 
-        // If there are no exclimations return
+        // If there are no exclamations return
         if (!pattern.test(word) || seed.random() > this._exclamationsModifier) return word;
 
         word = word.replace(pattern, ``);
