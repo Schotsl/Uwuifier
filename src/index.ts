@@ -16,7 +16,7 @@ export class Uwuifier {
     `*blushes*`,
     `*whispers to self*`,
     `*sweats*`,
-    `*sees buldge*`,
+    `*sees bulge*`,
     `*runs away*`,
     `*huggles tightly*`,
     `*boops your nose*`,
