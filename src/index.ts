@@ -45,16 +45,13 @@ export class Uwuifier {
       exclamations: 1
     }
   ) {
-    this._spacesModifier =
-      typeof spaces !== `undefined`
-        ? spaces
-        : {
+    this._spacesModifier = spaces ?? {
             faces: 0.05,
             actions: 0.075,
             stutters: 0.1
           };
-    this._wordsModifier = typeof words !== `undefined` ? words : 1;
-    this._exclamationsModifier = typeof exclamations !== `undefined` ? exclamations : 1;
+    this._wordsModifier = words ?? 1;
+    this._exclamationsModifier = exclamations ?? 1;
   }
 
   public uwuifyWords(sentence: string): string {
