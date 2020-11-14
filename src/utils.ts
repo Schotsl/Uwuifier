@@ -1,9 +1,5 @@
 'use strict';
 
-export const getElement = (array: string[]): string => {
-  return array[Math.floor(Math.random() * array.length)];
-};
-
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
