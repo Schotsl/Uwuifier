@@ -1,4 +1,3 @@
-import { getElement } from '../utils';
 import { Uwuifier } from '../index';
 import { Seed } from '../seed';
 
@@ -8,7 +7,7 @@ const uwuifier = new Uwuifier({
   exclamations: 0
 });
 
-const senteces = [
+const originalSentences = [
   'I had to get a tetanus vaccine when i stabbed my foot by accident',
   'When you say tonight, at what time approximately do you mean',
   'I need someone to go through the coop thing with me',
@@ -16,46 +15,30 @@ const senteces = [
   'No there has been this lockdown in the Netherlands so check out this site: https://www.who.int/health-topics',
   "Wow you're old as fuck, you're basically my grandpa you know!"
 ];
-const words = ['Stabbed', 'Tonight', 'Through', 'Struggling', 'Netherlands', 'Grandpa'];
+const uwuifiedSentences = [
+  'I-I-I had to ÚwÚ g-get a tetanyus vaccinye when ÚwÚ i stabbed my foot by (・`ω´・) accident ^w^',
+  'When you say UwU tonyight, at what time appwoximatewy do you mean',
+  'I-I-I nyeed someonye ^w^ to ÚwÚ go thwough the x3 coop thing with me',
+  "I'm weawwy x3 stwuggwing ^w^ to ÚwÚ put this stowy t-toghethew, you we'we chiwwing with a dude who h-h-has decided that woman sucks",
+  'nyo ;;w;; thewe h-h-has b-been this wockdown in the x3 Nyethewwands so check out ÚwÚ this site: https://www.who.int/health-topics :3',
+  "wow UwU you'we owd as fuck, owo you'we basicawwy :3 my gwandpa you knyow! owo"
+];
 
-console.log(`Please take a look if these senteces look uwuified:`);
+const OriginalWords = ['Stabbed', 'Tonight', 'Through', 'Struggling', 'Netherlands', 'Grandpa'];
+const uwuifiedWords = ['Stabbed', 'Tonyight', 'Thwough', 'Stwuggwing', 'Nyethewwands', 'Gwandpa'];
 
-test(`Uwufy a word`, () => {
-  const normalWord = getElement(words);
-  const uwuifiedWord = uwuifier.uwuifyWords(normalWord);
-
-  console.log(`\nNormal word 📔: ${normalWord}`);
-  console.log(`\nUwuified word 📘: ${uwuifiedWord}`);
-
-  expect(typeof uwuifiedWord).toBe('string');
-  expect(uwuifiedWord.length).toBeGreaterThanOrEqual(normalWord.length);
+test(`Uwufy words & check for inconsistency`, () => {
+  const sample = OriginalWords.map((word) => uwuifier.uwuifyWords(word));
+  expect(sample).toEqual(uwuifiedWords);
 });
 
-test('Uwufy a sentence', () => {
-  const normalSentence = getElement(senteces);
-  const uwufiedSentence = uwuifier.uwuifySentence(normalSentence);
-
-  console.log(`\nNormal sentence 📔: ${normalSentence}`);
-  console.log(`\nUwuified sentence 📘: ${uwufiedSentence}`);
-
-  expect(typeof uwufiedSentence).toBe('string');
-  expect(uwufiedSentence.length).toBeGreaterThanOrEqual(normalSentence.length);
+test('Uwufy sentences & check for inconsistency', () => {
+  const sample = originalSentences.map((sentence) => uwuifier.uwuifySentence(sentence));
+  expect(sample).toEqual(uwuifiedSentences);
 });
 
 test('Check consistency of number generator', () => {
-  const firstSeed = new Seed('test');
-  const firstRandom = firstSeed.random();
-
-  const secondSeed = new Seed('test');
-  const secondRandom = secondSeed.random();
-
-  expect(firstRandom).toEqual(secondRandom);
-});
-
-test('Check consistency of uwuified sentence', () => {
-  const normalSentence = getElement(senteces);
-  const firstSentence = uwuifier.uwuifySentence(normalSentence);
-  const secondSentence = uwuifier.uwuifySentence(normalSentence);
-
-  expect(firstSentence).toEqual(secondSentence);
+  const sample_1 = new Seed('test').random();
+  const sample_2 = new Seed('test').random();
+  expect(sample_1).toEqual(sample_2);
 });
