@@ -6,3 +6,6 @@ node_modules
 
 # Don't push dist folder
 /dist
+
+/.parcel-cache/
+/.cache/
