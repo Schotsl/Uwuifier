@@ -1,7 +1,9 @@
 'use strict';
 
-import { getCapitalPercentage, InitModifierParam, isUri } from './utils';
-import { Seed } from './seed';
+// @ts-ignore
+import { getCapitalPercentage, InitModifierParam, isUri } from './utils.ts';
+// @ts-ignore
+import { Seed } from './seed.ts';
 
 interface SpacesModifier {
   faces: number;
