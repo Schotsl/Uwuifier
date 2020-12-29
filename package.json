@@ -1,12 +1,9 @@
 {
   "name": "uwuifier",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "unpkg": "dist/index.umd.js",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "files": [
     "/dist"
   ],
@@ -21,17 +18,13 @@
   },
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "keywords": [
-    "Uwu",
-    "OwO",
-    "Emoji",
-    "Anime",
-    "Meme",
-    "Kawaii",
-    "Emote",
-    "Memes",
-    "Nuzzles",
     "Uwuifier",
-    "Weeaboo"
+    "Sentence",
+    "Anime",
+    "Faces",
+    "Weeb", 
+    "UwU",
+    "OwO"
   ],
   "devDependencies": {
     "@types/jest": "^26.0.14",
