@@ -1,22 +1,22 @@
 {
-  "name": "uwuifier",
+  "name": "@schotsl/uwuifier",
   "version": "2.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "unpkg": "dist/index.umd.js",
+  "author": "Sjors van Holst",
+  "license": "ISC",
+  "homepage": "https://github.com/Schotsl/uwuifier#readme",
+  "repository": "git://github.com/Schotsl/Uwuifier.git",
   "files": [
     "/dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Schotsl/uwuifier.git"
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
   },
-  "author": "Sjors van Holst",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Schotsl/uwuifier/issues"
   },
-  "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "keywords": [
     "Uwuifier",
     "Sentence",
