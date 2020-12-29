@@ -13,10 +13,8 @@ export class Uwuifier {
   public faces: string[] = [
     `(・\`ω´・)`,
     `;;w;;`,
-    `owo`,
     'OwO',
     `UwU`,
-    'uwu',
     `>w<`,
     `^w^`,
     `ÚwÚ`,
@@ -67,7 +65,7 @@ export class Uwuifier {
   constructor(
     { spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 }, words = 1, exclamations = 1 } = {
       spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
-      words: 1,
+      words: 0.7,
       exclamations: 1
     }
   ) {
@@ -76,7 +74,7 @@ export class Uwuifier {
             actions: 0.075,
             stutters: 0.1
           };
-    this._wordsModifier = words ?? 1;
+    this._wordsModifier = words ?? 0.7;
     this._exclamationsModifier = exclamations ?? 1;
   }
 
