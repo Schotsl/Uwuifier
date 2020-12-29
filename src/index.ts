@@ -10,25 +10,8 @@ interface SpacesModifier {
 }
 
 export class Uwuifier {
-  public faces: string[] = [
-    `(・\`ω´・)`,
-    `;;w;;`,
-    'OwO',
-    `UwU`,
-    `>w<`,
-    `^w^`,
-    `ÚwÚ`,
-    '^-^',
-    `:3`,
-    `x3`,
-  ];
-  public exclamations: string[] = [
-    `!?`,
-    `?!!`,
-    `?!?1`,
-    `!!11`,
-    `?!?!`,
-  ];
+  public faces: string[] = [`(・\`ω´・)`, `;;w;;`, 'OwO', `UwU`, `>w<`, `^w^`, `ÚwÚ`, '^-^', `:3`, `x3`];
+  public exclamations: string[] = [`!?`, `?!!`, `?!?1`, `!!11`, `?!?!`];
   public actions: string[] = [
     `*blushes*`,
     `*whispers to self*`,
@@ -44,7 +27,7 @@ export class Uwuifier {
     `*notices buldge*`,
     `*starts twerking*`,
     `*huggles tightly*`,
-    `*boops your nose*`,
+    `*boops your nose*`
   ];
   public uwuMap = [
     [/(?:r|l)/g, `w`],
@@ -70,10 +53,10 @@ export class Uwuifier {
     }
   ) {
     this._spacesModifier = spaces ?? {
-            faces: 0.05,
-            actions: 0.075,
-            stutters: 0.1
-          };
+      faces: 0.05,
+      actions: 0.075,
+      stutters: 0.1
+    };
     this._wordsModifier = words ?? 0.7;
     this._exclamationsModifier = exclamations ?? 1;
   }
