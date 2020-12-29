@@ -10,17 +10,43 @@ interface SpacesModifier {
 }
 
 export class Uwuifier {
-  public faces: string[] = [`(・\`ω´・)`, `;;w;;`, `owo`, `UwU`, `>w<`, `^w^`, `ÚwÚ`, `:3`, `x3`];
-  public exclamations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
+  public faces: string[] = [
+    `(・\`ω´・)`,
+    `;;w;;`,
+    `owo`,
+    'OwO',
+    `UwU`,
+    'uwu',
+    `>w<`,
+    `^w^`,
+    `ÚwÚ`,
+    '^-^',
+    `:3`,
+    `x3`,
+  ];
+  public exclamations: string[] = [
+    `!?`,
+    `?!!`,
+    `?!?1`,
+    `!!11`,
+    `?!?!`,
+  ];
   public actions: string[] = [
     `*blushes*`,
     `*whispers to self*`,
-    `*sweats*`,
-    `*sees bulge*`,
+    '*cries*',
+    '*screams*',
+    '*sweats*',
+    '*twerks*',
     `*runs away*`,
+    '*screeches*',
+    '*walks away*',
+    `*sees bulge*`,
+    '*looks at you*',
+    `*notices buldge*`,
+    `*starts twerking*`,
     `*huggles tightly*`,
     `*boops your nose*`,
-    `*starts twerking*`
   ];
   public uwuMap = [
     [/(?:r|l)/g, `w`],
