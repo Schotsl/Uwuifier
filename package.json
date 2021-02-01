@@ -56,10 +56,5 @@
     ],
     "exec": "npm run build",
     "ext": "ts"
-  },
-  "engines": {
-    "npm": "*",
-    "yarn": "please-use-npm",
-    "pnpm": "please-use-npm"
   }
 }
