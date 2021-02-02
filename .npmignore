@@ -3,4 +3,3 @@
 
 # Allow dist folder
 !dist
-!umd.js

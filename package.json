@@ -1,9 +1,10 @@
 {
   "name": "@schotsl/uwuifier",
   "version": "2.0.4",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "unpkg": "dist/index.js",
   "types": "dist/index.d.js",
-  "unpkg": "dist/index.umd.js",
   "author": "Sjors van Holst",
   "license": "MIT",
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
@@ -27,6 +28,7 @@
     "OwO"
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.1.1",
     "@types/jest": "^26.0.14",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
@@ -40,10 +42,9 @@
   },
   "scripts": {
     "lint": "eslint **/src/**/*.ts",
-    "test": "npx jest",
+    "test": "jest",
     "serve": "nodemon",
-    "build": "npm run lint -- --fix && npm run test && tsc",
-    "prepare": "npm run build && rollup -c"
+    "build": "npm run lint -- --fix && npm run test && rollup -c"
   },
   "nodemonConfig": {
     "ignore": [
@@ -53,7 +54,6 @@
     "watch": [
       "src"
     ],
-    "exec": "npm run build",
-    "ext": "tsc"
+    "exec": "npm run build"
   }
 }
