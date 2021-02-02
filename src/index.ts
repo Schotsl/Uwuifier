@@ -46,10 +46,10 @@ export class Uwuifier {
     }
   ) {
     this._spacesModifier = spaces ?? {
-            faces: 0.05,
-            actions: 0.075,
-            stutters: 0.1
-          };
+      faces: 0.05,
+      actions: 0.075,
+      stutters: 0.1
+    };
     this._wordsModifier = words ?? 1;
     this._exclamationsModifier = exclamations ?? 1;
   }
