@@ -5,7 +5,7 @@
   "types": "dist/index.d.js",
   "unpkg": "dist/index.umd.js",
   "author": "Sjors van Holst",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "repository": "git://github.com/Schotsl/Uwuifier.git",
   "files": [
@@ -55,11 +55,6 @@
       "src"
     ],
     "exec": "npm run build",
-    "ext": "tsc"
-  },
-  "engines": {
-    "npm": "*",
-    "yarn": "please-use-npm",
-    "pnpm": "please-use-npm"
+    "ext": "ts"
   }
 }
