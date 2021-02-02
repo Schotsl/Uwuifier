@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UwUifier</title>
+
+  <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+
+  <style>
+    textarea#input {
+      width: 100%;
+      height: 150px;
+    }
+
+    blockquote#output {
+      min-height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Uwuifier</h1>
+  </header>
+
+  <main>
+    <textarea id="input">
+  'I had to get a tetanus vaccine when i stabbed my foot by accident',
+  'When you say tonight, at what time approximately do you mean',
+  'I need someone to go through the coop thing with me',
+  "I'm really struggling to put this story toghether, you we're chilling with a dude who has decided that woman sucks",
+  'No there has been this lockdown in the Netherlands so check out this site: https://www.who.int/health-topics',
+  "Wow you're old as fuck, you're basically my grandpa you know!"
+    </textarea>
+    <blockquote id="output"></blockquote>
+  </main>
+
+  <script src="index.umd.js"></script>
+
+  <script>
+    (function() {
+      const uwuifier = new Uwuifier();
+
+      const inputEl = document.getElementById('input')
+      const outputEl = document.getElementById('output')
+
+      function makeOutput() {
+        outputEl.innerText = uwuifier.uwuifySentence(inputEl.value)
+      }
+
+      makeOutput()
+
+      inputEl.addEventListener('input', () => {
+        makeOutput()
+      })
+    })()
+  </script>
+</body>
+
+</html>
