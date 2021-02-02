@@ -46,7 +46,7 @@
     "serve": "nodemon",
     "build": "npm run lint && npm run format && npm run test && ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "rm -r dist && npm run build && parcel build umd.js -o dist/index.umd.js",
+    "prepare": "rm -rf dist && npm run build && parcel build umd.js -o dist/index.umd.js",
     "gh-pages": "npm run prepare && cp index.html dist/index.html && gh-pages -d dist"
   },
   "nodemonConfig": {
