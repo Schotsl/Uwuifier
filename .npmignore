@@ -3,3 +3,4 @@
 
 # Allow dist folder
 !dist
+!src

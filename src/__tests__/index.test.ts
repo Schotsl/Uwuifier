@@ -16,12 +16,12 @@ const originalSentences = [
   "Wow you're old as fuck, you're basically my grandpa you know!"
 ];
 const uwuifiedSentences = [
-  'I-I-I had to ÚwÚ g-get a tetanyus vaccinye when ÚwÚ i stabbed my foot by (・`ω´・) accident ^w^',
+  'I-I-I had to ÚwÚ g-get a tetanyus vaccinye when ^-^ i stabbed my foot by (・`ω´・) accident ÚwÚ',
   'When you say UwU tonyight, at what time appwoximatewy do you mean',
-  'I-I-I nyeed someonye ^w^ to ÚwÚ go thwough the x3 coop thing with me',
-  "I'm weawwy x3 stwuggwing ^w^ to ÚwÚ put this stowy t-toghethew, you we'we chiwwing with a dude who h-h-has decided that woman sucks",
-  'nyo ;;w;; thewe h-h-has b-been this wockdown in the x3 Nyethewwands so check out ÚwÚ this site: https://www.who.int/health-topics :3',
-  "wow UwU you'we owd as fuck, owo you'we basicawwy :3 my gwandpa you knyow! owo"
+  'I-I-I nyeed someonye ÚwÚ to ÚwÚ go thwough the x3 coop thing with me',
+  "I'm weawwy x3 stwuggwing ÚwÚ to ÚwÚ put this stowy t-toghethew, you we'we chiwwing with a dude who h-h-has decided that woman sucks",
+  'nyo ;;w;; thewe h-h-has b-been this wockdown in the x3 Nyethewwands so check out ^-^ this site: https://www.who.int/health-topics :3',
+  "wow UwU you'we owd as fuck, UwU you'we basicawwy :3 my gwandpa you knyow! UwU"
 ];
 
 const OriginalWords = ['Stabbed', 'Tonight', 'Through', 'Struggling', 'Netherlands', 'Grandpa'];

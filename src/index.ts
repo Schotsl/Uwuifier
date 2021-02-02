@@ -1,6 +1,7 @@
 'use strict';
 
-import { getCapitalPercentage, InitModifierParam, isUri } from './utils';
+import { InitModifierParam, getCapitalPercentage, isUri } from './utils';
+
 import { Seed } from './seed';
 
 interface SpacesModifier {
@@ -10,17 +11,24 @@ interface SpacesModifier {
 }
 
 export class Uwuifier {
-  public faces: string[] = [`(・\`ω´・)`, `;;w;;`, `owo`, `UwU`, `>w<`, `^w^`, `ÚwÚ`, `:3`, `x3`];
-  public exclamations: string[] = [`?!!`, `?!?1`, `!!11`, `?!?!`, `!?`];
+  public faces: string[] = [`(・\`ω´・)`, `;;w;;`, 'OwO', `UwU`, `>w<`, `^w^`, `ÚwÚ`, '^-^', `:3`, `x3`];
+  public exclamations: string[] = [`!?`, `?!!`, `?!?1`, `!!11`, `?!?!`];
   public actions: string[] = [
     `*blushes*`,
     `*whispers to self*`,
-    `*sweats*`,
-    `*sees bulge*`,
+    '*cries*',
+    '*screams*',
+    '*sweats*',
+    '*twerks*',
     `*runs away*`,
+    '*screeches*',
+    '*walks away*',
+    `*sees bulge*`,
+    '*looks at you*',
+    `*notices buldge*`,
+    `*starts twerking*`,
     `*huggles tightly*`,
-    `*boops your nose*`,
-    `*starts twerking*`
+    `*boops your nose*`
   ];
   public uwuMap = [
     [/(?:r|l)/g, `w`],
@@ -41,7 +49,7 @@ export class Uwuifier {
   constructor(
     { spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 }, words = 1, exclamations = 1 } = {
       spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
-      words: 1,
+      words: 0.7,
       exclamations: 1
     }
   ) {
@@ -50,7 +58,7 @@ export class Uwuifier {
       actions: 0.075,
       stutters: 0.1
     };
-    this._wordsModifier = words ?? 1;
+    this._wordsModifier = words ?? 0.7;
     this._exclamationsModifier = exclamations ?? 1;
   }
 

@@ -36,9 +36,17 @@ This package uses a seeded random generator to ensure all results will be the sa
 
 # Quick start
 
+## CDN
+
+You can import Uwuifier in your HTML using UNPKG by including this script tag in the header.
+
+```html 
+<script src="https://unpkg.com/uwuifier>"></script>
+```
+
 ## Deno
 
-With Deno we don't need to install the Uwuifier package so you can just download it from a URL!
+For Deno we don't have to install the Uwuifier package, we can just use the URL!
 
 ```ts
 // Import the Uwuifier package
