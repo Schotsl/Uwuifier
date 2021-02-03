@@ -1,5 +1,3 @@
-'use strict';
-
 import { getCapitalPercentage, InitModifierParam, isUri } from './utils';
 import { Seed } from './seed';
 
