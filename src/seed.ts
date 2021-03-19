@@ -20,8 +20,8 @@ export class Seed {
         // This is a seeded random generator
         // Returns a function which returns a value between 0 and 0xFFFFFFFF (32-bits)
 
-        // eslint-disable-next-line no-var
-        for (var i = 0, h = 1779033703 ^ seed.length; i < seed.length; i++)
+        let h = 1779033703 ^ seed.length;
+        for (let i = 0; i < seed.length; i++)
             (h = Math.imul(h ^ seed.charCodeAt(i), 3432918353)), (h = (h << 13) | (h >>> 19));
 
         return () => {
@@ -79,7 +79,6 @@ export class Seed {
 
     public mulberry32(min = 0, max = 1): number {
         let a = this._seeder();
-
         let t = (a += 0x6d2b79f5);
         t = Math.imul(t ^ (t >>> 15), t | 1);
         t ^= t + Math.imul(t ^ (t >>> 7), t | 61);

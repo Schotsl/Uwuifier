@@ -11,7 +11,6 @@ export const getCapitalPercentage = (input: string): number => {
     for (const currentLetter of input) {
         if (new RegExp(/^[a-zA-Z]+$/).test(currentLetter)) {
             totalLetters++;
-
             if (currentLetter === currentLetter.toUpperCase()) {
                 upperLetters++;
             }
@@ -66,7 +65,7 @@ export function isUri(value: string): boolean {
 
     if (!split) return false;
 
-    const [scheme, authority, path] = [split[1], split[2], split[3]];
+    const [, scheme, authority, path] = split;
 
     // scheme and path are required, though the path can be empty
     if (!(scheme && scheme.length && path.length >= 0)) return false;
@@ -74,9 +73,9 @@ export function isUri(value: string): boolean {
     // if authority is present, the path must be empty or begin with a /
     if (authority && authority.length) {
         if (!(path.length === 0 || /^\//.test(path))) return false;
-    } else {
-    // if authority is not present, the path must not start with //
-        if (/^\/\//.test(path)) return false;
+    } else if (/^\/\//.test(path)) {
+        // if authority is not present, the path must not start with //
+        return false;
     }
 
     // scheme must begin with a letter, then consist of letters, digits, +, ., or -

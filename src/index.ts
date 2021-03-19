@@ -7,6 +7,12 @@ interface SpacesModifier {
     stutters: number;
 }
 
+const DEFAULTS = {
+    SPACES: { faces: 0.05, actions: 0.075, stutters: 0.1 },
+    WORDS: 1,
+    EXCLAMATIONS: 1,
+};
+
 export class Uwuifier {
     public faces: string[] = ['(・`ω´・)', ';;w;;', 'OwO', 'UwU', '>w<', '^w^', 'ÚwÚ', '^-^', ':3', 'x3'];
     public exclamations: string[] = ['!?', '?!!', '?!?1', '!!11', '?!?!'];
@@ -43,15 +49,20 @@ export class Uwuifier {
     @InitModifierParam()
     private _exclamationsModifier: number;
 
-    constructor({ spaces = { faces: 0.05, actions: 0.075, stutters: 0.1 }, words = 1, exclamations = 1 } = 
-    {
-        spaces: { faces: 0.05, actions: 0.075, stutters: 0.1 },
-        words: 0.7,
-        exclamations: 1
-    }) {
-        this._spacesModifier = spaces ?? { faces: 0.05, actions: 0.075, stutters: 0.1 };
-        this._wordsModifier = words ?? 0.7;
-        this._exclamationsModifier = exclamations ?? 1;
+    constructor(
+        { 
+            spaces = DEFAULTS.SPACES, 
+            words = DEFAULTS.WORDS,
+            exclamations = DEFAULTS.EXCLAMATIONS
+        } = {
+            spaces: DEFAULTS.SPACES,
+            words: DEFAULTS.WORDS,
+            exclamations: DEFAULTS.EXCLAMATIONS
+        }
+    ) {
+        this._spacesModifier = spaces ?? DEFAULTS.SPACES;
+        this._wordsModifier = words ?? DEFAULTS.WORDS;
+        this._exclamationsModifier = exclamations ?? DEFAULTS.EXCLAMATIONS;
     }
 
     public uwuifyWords(sentence: string): string {
@@ -86,7 +97,7 @@ export class Uwuifier {
             const seed = new Seed(word);
             const random = seed.random();
 
-            const firstCharacter = word[0];
+            const [firstCharacter] = word;
 
             if (random <= faceThreshold && this.faces) {
                 // Add random face before the word
@@ -99,7 +110,6 @@ export class Uwuifier {
             } else if (random <= stutterThreshold && !isUri(word)) {
                 // Add stutter with a length between 0 and 2
                 const stutter = seed.randomInt(0, 2);
-
                 return (firstCharacter + '-').repeat(stutter) + word;
             }
 
