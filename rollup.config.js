@@ -1,22 +1,22 @@
 import typescript from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
     {
         input: 'src/index.ts',
         output: {
             // Workaround for generating declarations https://github.com/rollup/plugins/issues/105
-            dir: './',
-            entryFileNames: 'dist/index.js',
+            dir: 'dist/',
             format: 'es',
         },
-        plugins: [typescript({ declaration: true, declarationDir: 'dist/', rootDir: 'src/' })]
+        plugins: [terser(), typescript({ declaration: true, declarationDir: 'dist/' })]
     },
     {
         input: 'src/index.ts',
-        output: { 
+        output: {
             file: 'dist/index.cjs',
             format: 'cjs'
         },
-        plugins: [typescript()]
+        plugins: [terser(), typescript()]
     },
-]
+];
