@@ -1,4 +1,4 @@
-// no-explicit-any
+// deno-lint-ignore-file no-explicit-any
 
 export const getRandomInt = (min: number, max: number): number => {
   min = Math.ceil(min);

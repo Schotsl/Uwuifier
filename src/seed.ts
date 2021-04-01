@@ -1,6 +1,6 @@
 // This random seed package was previously publicated on the Deno site as a standalone package but I've decided to just integrate it into the Uwuifier
 
-export class Seed {
+export default class Seed {
   private _seed: string;
   private _seeder: () => number;
 
