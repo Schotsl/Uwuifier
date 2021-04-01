@@ -1,9 +1,10 @@
 {
   "name": "@schotsl/uwuifier",
   "version": "2.0.4",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "unpkg": "dist/index.js",
   "types": "dist/index.d.js",
-  "unpkg": "dist/index.umd.js",
   "author": "Sjors van Holst",
   "license": "MIT",
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
@@ -27,24 +28,24 @@
     "OwO"
   ],
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@typescript-eslint/eslint-plugin": "^4.14.1",
-    "@typescript-eslint/parser": "^4.14.1",
-    "eslint": "^7.19.0",
+    "@rollup/plugin-typescript": "^8.2.0",
+    "@types/jest": "^26.0.21",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-jest": "^24.3.2",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
-    "prettier": "^2.1.2",
-    "rollup": "^2.38.3",
-    "ts-jest": "^26.4.0",
-    "typescript": "^4.0.3"
+    "rollup": "^2.42.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3"
   },
   "scripts": {
-    "lint": "eslint",
-    "test": "npx jest",
+    "lint": "eslint **/src/**/*.ts",
+    "test": "jest",
     "serve": "nodemon",
-    "build": "npm run lint && npm run format && npm run test && tsc",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "npm run build && rollup -c"
+    "build": "npm run lint -- --fix && npm run test && rollup -c"
   },
   "nodemonConfig": {
     "ignore": [
@@ -54,7 +55,6 @@
     "watch": [
       "src"
     ],
-    "exec": "npm run build",
-    "ext": "ts"
+    "exec": "npm run build"
   }
 }
