@@ -8,7 +8,7 @@ on: [push, pull_request]
 jobs:
   Lint:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -19,10 +19,10 @@ jobs:
           deno-version: v1.x
 
       - name: Run deno fmt
-        run: deno fmt --check
+        run: deno fmt --check src/
 
       - name: Run deno lint
-        run: deno lint --unstable
+        run: deno lint --unstable src/
 
   Build:
     runs-on: ubuntu-latest
@@ -33,10 +33,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+
+    - name: Setup latest deno version
+      uses: denolib/setup-deno@v2
+      with:
+        deno-version: v1.x
+
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
