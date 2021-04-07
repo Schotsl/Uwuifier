@@ -1,4 +1,4 @@
-<a href="https://aimeos.org/">
+<a href="https://uwuifier.com">
     <img src="https://uwuifier.com/logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
@@ -10,14 +10,14 @@ This lightweight package allows you to uwuify any sentence or word (excluding UR
 
 This package uses a seeded random generator to ensure all results will be the same, this package also analyses the casing of every sentence to ensure letter casing will still look correct even when the string is uwuified. If you've got any more suggestions on how to improve this package, please create an issue on our GitHub page!
 
+This repository contains the Uwuifier NPM package, it's written in TypeScript and compiled into JavaScript, makes use of Jest for testing the code and is deployed on NPM.
+
 &nbsp;
 
 # Table of content
 
 - [Example](#example)
 - [Quick start](#quick-start)
-    - [Deno](#deno)
-    - [JavaScript](#javascript)
 - [Constructor](#constructor)
 - [Functions](#functions)
 - [License](#license)
@@ -44,21 +44,6 @@ You can import Uwuifier in your HTML using UNPKG by including this script tag in
 <script src="https://unpkg.com/uwuifier>"></script>
 ```
 
-## Deno
-
-For Deno we don't have to install the Uwuifier package, we can just use the URL!
-
-```ts
-// Import the Uwuifier package
-import { Uwuifier } from 'https://deno.land/x/uwuifier/src/index.ts';
-
-// Create a "Uwuifier" instance
-const uwuifier = new Uwuifier();
-
-// Uwuifiy a sentence
-console.log(uwuifier.uwuifySentence('This package is amazing!'));
-```
-
 ## JavaScript
 
 To use Uwuifier in Node, JavaScript or TypeScript you firstly have to install it using NPM.
@@ -71,7 +56,7 @@ Then we can import Uwuifier in our project.
 
 ```js
 // Import the Uwuifier package
-import { Uwuifier } from 'Uwuifier';
+import Uwuifier from 'uwuifier';
 
 // Create a "Uwuifier" instance
 const uwuifier = new Uwuifier();
@@ -161,33 +146,16 @@ The `uwuifyExclamations` function only replaces exclamations with more 'expressi
 
 &nbsp;
 
-# Special thanks
+# Acknowledgement
 
 I was inspired to write this god awful package by [this](https://honk.moe/tools/owo.html) site, I would've given full credit but it appears he got most of the Regex from the OwO Google Chrome extension made by leafysweetsgarden, I would include a link but the page is offline. So short story short: I'd like to give a big thanks to leafysweetsgarden for the Regex and the inspiration! 
 
 &nbsp;
 
-# MIT License
+# License
 
-Copyright (c) 2020 Sjors van Holst
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This project is licensed under the MIT License - see the
+[LICENSE.md](LICENSE.md) file for details
 
 [npm-image]: https://img.shields.io/npm/v/uwuifier.svg
 [npm-url]: https://www.npmjs.com/package/uwuifier

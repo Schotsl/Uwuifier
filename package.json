@@ -1,6 +1,6 @@
 {
-  "name": "@schotsl/uwuifier",
-  "version": "2.0.4",
+  "name": "uwuifier",
+  "version": "3.0.0",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "unpkg": "dist/index.js",
@@ -12,20 +12,16 @@
   "files": [
     "/dist"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "bugs": {
     "url": "https://github.com/Schotsl/uwuifier/issues"
   },
   "keywords": [
-    "Uwuifier",
-    "Sentence",
-    "Anime",
-    "Faces",
-    "Weeb",
-    "UwU",
-    "OwO"
+    "sentence",
+    "faces",
+    "anime",
+    "weeb",
+    "uwu",
+    "owo"
   ],
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.0",
