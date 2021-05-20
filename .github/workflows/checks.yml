@@ -19,14 +19,14 @@ jobs:
         run: deno fmt --check src/
 
       - name: Run deno lint
-        run: deno lint --unstable src/
+        run: deno lint src/
 
   Build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
