@@ -49,6 +49,9 @@
     "watch": [
       "./src"
     ],
-    "exec": "npm run build"
+    "exec": "npm run build",
+    "engines": {
+      "node": ">=14"
+    }
   }
 }
