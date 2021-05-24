@@ -36,28 +36,31 @@ This repository contains the Uwuifier NPM package, it's written in TypeScript an
 
 # Quick start
 
-## CDN
-
-You can import Uwuifier in your HTML using UNPKG by including this script tag in the header.
-
-```html 
-<script src="https://unpkg.com/uwuifier>"></script>
-```
-
-## JavaScript
-
-To use Uwuifier in Node, JavaScript or TypeScript you firstly have to install it using NPM.
-
+## Node
+Install with NPM or with any other package manager of choice.
 ```bash
 npm install uwuifier
 ```
 
-Then we can import Uwuifier in our project.
+## Deno
+We also have a Deno package available. For more information visit:
+https://github.com/Schotsl/Uwuifier-deno
+
+## JavaScript
+
+#### Node
+```js
+import Uwuifier from 'uwuifier';
+// or
+const Uwuifier = require('uwuifier');
+```
+
+#### Web
+```js
+import Uwuifier from 'https://unpkg.com/uwuifier';
+```
 
 ```js
-// Import the Uwuifier package
-import Uwuifier from 'uwuifier';
-
 // Create a "Uwuifier" instance
 const uwuifier = new Uwuifier();
 
@@ -80,7 +83,7 @@ const uwuifier = new Uwuifier({
     },
     words: 1,
     exclamations: 1
- });
+});
  ```
  
  #### spaces
