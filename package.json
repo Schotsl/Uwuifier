@@ -1,16 +1,16 @@
 {
   "name": "uwuifier",
   "version": "3.0.0",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "unpkg": "dist/index.js",
-  "types": "dist/index.d.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "unpkg": "./dist/index.js",
+  "types": "./dist/types/index.d.js",
   "author": "Sjors van Holst",
   "license": "MIT",
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "repository": "git://github.com/Schotsl/Uwuifier.git",
   "files": [
-    "/dist"
+    "./dist"
   ],
   "bugs": {
     "url": "https://github.com/Schotsl/uwuifier/issues"
@@ -24,19 +24,18 @@
     "owo"
   ],
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.2.0",
-    "@types/jest": "^26.0.22",
-    "@types/mocha": "^8.2.2",
-    "jest": "^26.4.2",
-    "nodemon": "^2.0.4",
-    "rollup": "^2.42.0",
+    "@types/jest": "^26.0.23",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "rollup": "^2.48.0",
     "rollup-plugin-terser": "^7.0.2",
-    "ts-jest": "^26.5.4",
-    "tslib": "^2.1.0",
-    "typescript": "^4.2.3"
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^26.5.6",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
   },
   "scripts": {
-    "lint": "deno lint --unstable src/",
+    "lint": "deno lint src/",
     "format": "deno fmt src/",
     "test": "jest",
     "serve": "nodemon",
@@ -48,7 +47,7 @@
       "node_modules"
     ],
     "watch": [
-      "src"
+      "./src"
     ],
     "exec": "npm run build"
   }
