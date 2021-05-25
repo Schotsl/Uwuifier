@@ -1,6 +1,6 @@
 {
   "name": "uwuifier",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "unpkg": "./dist/index.js",
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "repository": "git://github.com/Schotsl/Uwuifier.git",
   "files": [
-    "./dist"
+    "dist/*"
   ],
   "bugs": {
     "url": "https://github.com/Schotsl/uwuifier/issues"
