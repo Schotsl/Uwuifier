@@ -1,5 +1,6 @@
 {
   "name": "uwuifier",
+  "description": "Uwuifier is a lightweight package that allows you to uwuify any words or sentences (excluding URL's) with many configurable parameters",
   "version": "4.0.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -9,12 +10,12 @@
   "license": "MIT",
   "homepage": "https://github.com/Schotsl/uwuifier#readme",
   "repository": "git://github.com/Schotsl/Uwuifier.git",
-  "files": [
-    "dist/*"
-  ],
   "bugs": {
     "url": "https://github.com/Schotsl/uwuifier/issues"
   },
+  "files": [
+    "dist/*"
+  ],
   "keywords": [
     "sentence",
     "faces",
@@ -42,12 +43,8 @@
     "build": "npm run format && npm run lint && npm run test && rollup -c"
   },
   "nodemonConfig": {
-    "ignore": [
-      ".git",
-      "node_modules"
-    ],
     "watch": [
-      "./src"
+      "src"
     ],
     "exec": "npm run build",
     "engines": {
