@@ -1,6 +1,5 @@
-import { getCapitalPercentage, InitModifierParam, isUri } from "./utils";
-
-import Seed from "./seed";
+import { getCapitalPercentage, InitModifierParam, isUri } from "./utils/index";
+import Seed from "./utils/seed";
 
 interface SpacesModifier {
   faces: number;

@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-undef
 
-import Uwuifier from "./index";
-import Seed from "./seed";
+import Uwuifier from "../src/index";
+import Seed from "../src/utils/seed";
 
 const uwuifier = new Uwuifier({
   spaces: { faces: 0.3, actions: 0.05, stutters: 0.1 },

@@ -8,7 +8,6 @@
     "declarationDir": "./dist/types",
     "esModuleInterop": true,
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "src/test.ts"],
+  "include": ["src/index.ts"],
   "types": ["@types/jest"],
 }
