@@ -18,7 +18,7 @@ export default [
         ],
         plugins: [
             typescript({ useTsconfigDeclarationDir: true }),
-            terser({ format: { comments: false } }),
+            terser({ format: { comments: false }, keep_classnames: true }),
         ],
     },
 ];
