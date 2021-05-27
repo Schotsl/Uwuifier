@@ -41,9 +41,9 @@
     "format": "deno fmt src/",
     "test": "jest",
     "serve": "nodemon",
-    "clean": "node scripts/clean.js",
+    "prebuild": "node scripts/prebuild.js",
     "postbuild": "node scripts/postbuild.js",
-    "build": "npm run format && npm run lint && npm run test && npm run clean && rollup -c && npm run postbuild"
+    "build": "npm run format && npm run lint && npm run test && npm run prebuild && rollup -c && npm run postbuild"
   },
   "nodemonConfig": {
     "watch": [
