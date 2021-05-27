@@ -1,17 +1,17 @@
+import pkg from './package.json';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
-import { main as cjs_output, module as esm_output } from './package.json';
 
 export default [
     {
         input: 'src/index.ts',
         output: [
             {
-                file: esm_output,
+                file: pkg.module,
                 format: 'esm',
             },
             {
-                file: cjs_output,
+                file: pkg.main,
                 format: 'cjs',
                 exports: 'auto',
             },
