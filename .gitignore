@@ -1,11 +1,9 @@
-# Ignore node modules
+# Dependency directory
 node_modules
 
-# Ignore MacOS finder files
+# OS files
 .DS_Store
 
-# Don't push dist folder
+# Generated files
 /dist
-
-# Ignore cache
 /.cache
