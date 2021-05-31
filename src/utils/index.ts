@@ -1,28 +1,31 @@
 // deno-lint-ignore-file no-explicit-any
 
-export const getRandomInt = (min: number, max: number): number => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+function isLetter(char: string) {
+  return /^\p{L}/u.test(char);
+}
 
-export const getCapitalPercentage = (input: string): number => {
+function isUpperCase(char: string) {
+  return char === char.toUpperCase();
+}
+
+export function getCapitalPercentage(str: string): number {
   let totalLetters = 0;
   let upperLetters = 0;
 
-  for (const currentLetter of input) {
-    if (new RegExp(/^[a-zA-Z]+$/).test(currentLetter)) {
-      totalLetters++;
-      if (currentLetter === currentLetter.toUpperCase()) {
-        upperLetters++;
-      }
+  for (const currentLetter of str) {
+    if (!isLetter(currentLetter)) continue;
+
+    if (isUpperCase(currentLetter)) {
+      upperLetters++;
     }
+
+    totalLetters++;
   }
 
   return upperLetters / totalLetters;
-};
+}
 
-export const InitModifierParam = () => {
+export function InitModifierParam() {
   return (target: { [key: string]: any }, key: string): void => {
     let value = target[key];
     let sum = 0;
@@ -49,7 +52,7 @@ export const InitModifierParam = () => {
       configurable: true,
     });
   };
-};
+}
 
 export function isUri(value: string): boolean {
   if (!value) return false;
