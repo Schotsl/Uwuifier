@@ -6,6 +6,7 @@
     "experimentalDecorators": true,
     "declaration": true,
     "declarationDir": "./dist/types",
+    "esModuleInterop": true,
   },
   "include": ["src/index.ts"],
   "types": ["@types/jest"],
