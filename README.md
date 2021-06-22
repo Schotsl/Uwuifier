@@ -14,7 +14,7 @@ This repository contains the Uwuifier NPM package, it's written in TypeScript an
 
 &nbsp;
 
-# Table of content
+# Table of contents
 
 - [Example](#example)
 - [Quick start](#quick-start)
