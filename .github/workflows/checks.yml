@@ -1,27 +1,32 @@
 name: Checks
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  Lint:
+  quality:
+    name: Quality
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Setup latest deno version
+      - name: Setup latest Deno version
         uses: denolib/setup-deno@v2
         with:
           deno-version: v1.x
 
-      - name: Run deno fmt
-        run: deno fmt --check src/
+      - name: Run Deno fmt
+        run: deno fmt --check **/*.ts
 
-      - name: Run deno lint
-        run: deno lint src/
+      - name: Run Deno lint
+        run: deno lint **/*.ts
 
-  Build:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,7 +41,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Setup latest deno version
+    - name: Setup latest Deno version
       uses: denolib/setup-deno@v2
       with:
         deno-version: v1.x
