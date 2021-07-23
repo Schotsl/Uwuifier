@@ -96,3 +96,9 @@ export function isUri(value: string): boolean {
 
   return true;
 }
+
+export function isAt(value: string): boolean {
+  // Check if the first character is '@'
+  const first = value.charAt(0);
+  return first === "@";
+}

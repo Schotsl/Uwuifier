@@ -1,4 +1,10 @@
-import { getCapitalPercentage, InitModifierParam, isUri } from "./utils/index";
+import {
+  getCapitalPercentage,
+  InitModifierParam,
+  isAt,
+  isUri,
+} from "./utils/index";
+
 import Seed from "./utils/seed";
 
 interface SpacesModifier {
@@ -80,6 +86,7 @@ export default class Uwuifier {
     const words = sentence.split(" ");
 
     const uwuifiedSentence = words.map((word) => {
+      if (isAt(word)) return word;
       if (isUri(word)) return word;
 
       const seed = new Seed(word);
