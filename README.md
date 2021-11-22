@@ -1,5 +1,5 @@
 <a href="https://uwuifier.com">
-    <img src="https://uwuifier.com/logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
+    <img src="https://uwuifier.com/logo.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
 Uwuifier
