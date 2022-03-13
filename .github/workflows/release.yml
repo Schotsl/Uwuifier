@@ -2,8 +2,8 @@ name: Checks
 
 on:
   release:
-    branches:
-      - main
+    types:
+      - published
 
 jobs:
   quality:
