@@ -1,18 +1,21 @@
-import { build } from "https://deno.land/x/dnt/mod.ts";
+import { build } from "https://deno.land/x/dnt@0.22.0/mod.ts";
 
 await build({
-  entryPoints: ["./index.ts"],
-  outDir: "./dist",
+  shims: {
+    deno: true,
+  },
   package: {
     name: "uwuifier",
-    version: "4.0.4",
     author: "Sjors van Holst",
     license: "MIT",
+    version: "4.0.4",
     homepage: "https://uwuifier.com",
     repository: "git://github.com/Schotsl/Uwuifier.git",
     description:
       "Uwuifier is a lightweight package that allows you to uwuify any words or sentences (excluding URL's) with many configurable parameters",
   },
+  outDir: "./dist",
+  entryPoints: ["./index.ts"],
 });
 
 Deno.copyFileSync("README.md", "dist/README.md");
