@@ -1,0 +1,43 @@
+{
+  "$schema": "https://deno.land/x/denon@2.4.8/schema.json",
+  "scripts": {
+    "test": {
+      "cmd": "deno test index.ts",
+      "desc": "Test Uwuifier"
+    },
+    "start": {
+      "cmd": "deno run index.ts",
+      "desc": "Start Uwuifier"
+    },
+    "build": {
+      "cmd": "deno run build.ts",
+      "desc": "Build Uwuifier"
+    },
+    "lint": {
+      "cmd": "deno lint **.ts",
+      "desc": "Lint Uwuifier"
+    },
+    "format": {
+      "cmd": "deno fmt **.ts",
+      "desc": "Format Uwuifier"
+    },
+    "compile": {
+      "cmd": "deno compile --target=x86_64-unknown-linux-gnu index.ts",
+      "desc": "Compile Uwuifier"
+    }
+  },
+  "allow": {
+    "run": "npm",
+    "env": "HOME,DENO_AUTH_TOKENS,DENO_DIR",
+    "read": true,
+    "write": true
+  },
+  "logger": {
+    "quiet": true,
+    "debug": true
+  },
+  "watcher": {
+    "exts": ["ts"],
+    "skip": ["dist/**"]
+  }
+}

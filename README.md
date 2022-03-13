@@ -1,20 +1,19 @@
 <a href="https://uwuifier.com">
-    <img src="https://uwuifier.com/logo.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
+    <img src="https://uwuifier.com/logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
 Uwuifier
 ======================
-[![NPM Version][npm-image]][npm-url]
 
 This lightweight package allows you to uwuify any sentence or word (excluding URL's) with many configurable parameters while giving access to many vewy kawaii sentences and faces! You can view a demo on https://uwuifier.com.
 
 This package uses a seeded random generator to ensure all results will be the same, this package also analyses the casing of every sentence to ensure letter casing will still look correct even when the string is uwuified. If you've got any more suggestions on how to improve this package, please create an issue on our GitHub page!
 
-This repository contains the Uwuifier NPM package, it's written in TypeScript and compiled into JavaScript, makes use of Jest for testing the code and is deployed on NPM.
+This repository contains the Uwuifier Deno package! It's made for Deno which means it's written in TypeScript, the package also makes use of the build-in Deno testing.
 
 &nbsp;
 
-# Table of contents
+# Table of content
 
 - [Example](#example)
 - [Quick start](#quick-start)
@@ -36,36 +35,19 @@ This repository contains the Uwuifier NPM package, it's written in TypeScript an
 
 # Quick start
 
-## Node
-Install with NPM or with any other package manager of choice.
-```bash
-npm install uwuifier
-```
-
 ## Deno
-We also have a Deno package available. For more information visit:
-https://github.com/Schotsl/Uwuifier-deno
 
-## JavaScript
+Since Deno uses URL based imports we don't need to install anything to get started!
 
-#### Node
-```js
-import Uwuifier from 'uwuifier';
-// or
-const Uwuifier = require('uwuifier');
-```
+```typescript
+// Import the Uwuifier package
+import Uwuifier from "https://deno.land/x/uwuifier/src/index.ts";
 
-#### Web
-```js
-import Uwuifier from 'https://unpkg.com/uwuifier';
-```
-
-```js
 // Create a "Uwuifier" instance
 const uwuifier = new Uwuifier();
 
 // Uwuifiy a sentence
-console.log(uwuifier.uwuifySentence('This package is amazing!'));
+console.log(uwuifier.uwuifySentence("This package is amazing!"));
 ```
 
 &nbsp;
@@ -83,7 +65,7 @@ const uwuifier = new Uwuifier({
     },
     words: 1,
     exclamations: 1
-});
+ });
  ```
  
  #### spaces
@@ -159,6 +141,3 @@ I was inspired to write this god awful package by [this](https://honk.moe/tools/
 
 This project is licensed under the MIT License - see the
 [LICENSE.md](LICENSE.md) file for details
-
-[npm-image]: https://img.shields.io/npm/v/uwuifier.svg
-[npm-url]: https://www.npmjs.com/package/uwuifier

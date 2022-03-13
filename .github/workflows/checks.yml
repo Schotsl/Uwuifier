@@ -20,31 +20,50 @@ jobs:
           deno-version: v1.x
 
       - name: Run Deno fmt
-        run: deno fmt --check **/*.ts
+        run: deno fmt --check **.ts
 
       - name: Run Deno lint
-        run: deno lint **/*.ts
+        run: deno lint **.ts
 
-  build:
-    name: Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x, 16.x]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup latest Deno version
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.x
+
+      - name: Run Deno test
+        run: deno test index.ts
+
+  deploy:
+    name: NPM publish
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout sources
+        uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Setup latest Deno version
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.x
 
-    - name: Setup latest Deno version
-      uses: denolib/setup-deno@v2
-      with:
-        deno-version: v1.x
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
 
-    - run: npm ci
-    - run: npm run build --if-present
+      - name: Building package
+        run: deno run --allow-run=npm --allow-env=HOME,DENO_AUTH_TOKENS,DENO_DIR --allow-read --allow-write build.ts
+
+      # - name: Publishing to NPM
+      #   run: cd dist && npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

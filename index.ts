@@ -1,11 +1,10 @@
+import Seed from "./seed.ts";
 import {
   getCapitalPercentage,
   InitModifierParam,
   isAt,
   isUri,
-} from "./utils/index";
-
-import Seed from "./utils/seed";
+} from "./utils.ts";
 
 interface SpacesModifier {
   faces: number;

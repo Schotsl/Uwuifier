@@ -1,9 +1,1 @@
-# Dependency directory
-node_modules
-
-# OS files
-.DS_Store
-
-# Generated files
-/dist
-/.cache
+dist

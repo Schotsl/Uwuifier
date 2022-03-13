@@ -1,7 +1,7 @@
-// deno-lint-ignore-file no-undef
+import { assertEquals } from "https://deno.land/std@0.82.0/testing/asserts.ts";
 
-import Uwuifier from "../src/index";
-import Seed from "../src/utils/seed";
+import Seed from "./seed.ts";
+import Uwuifier from "./index.ts";
 
 const uwuifier = new Uwuifier({
   spaces: { faces: 0.3, actions: 0.05, stutters: 0.1 },
@@ -17,6 +17,7 @@ const originalSentences = [
   "No there has been this lockdown in the Netherlands so check out this site: https://www.who.int/health-topics",
   "Wow you're old as fuck, you're basically my grandpa you know!",
 ];
+
 const uwuifiedSentences = [
   "I-I-I had to ÚwÚ g-get a tetanyus vaccinye when ^-^ i stabbed my foot by (・`ω´・) accident ÚwÚ",
   "When you say UwU tonyight, at what time appwoximatewy do you mean",
@@ -43,22 +44,22 @@ const uwuifiedWords = [
   "Gwandpa",
 ];
 
-test("Uwufy words & check for inconsistency", () => {
+Deno.test(`Uwufy words & check for inconsistency`, () => {
   const transformedWords = OriginalWords.map((word) =>
     uwuifier.uwuifyWords(word)
   );
-  expect(transformedWords).toEqual(uwuifiedWords);
+  assertEquals(transformedWords, uwuifiedWords);
 });
 
-test("Uwufy sentences & check for inconsistency", () => {
-  const transformedWords = originalSentences.map((sentence) =>
+Deno.test("Uwufy sentences & check for inconsistency", () => {
+  const transformedSentences = originalSentences.map((sentence) =>
     uwuifier.uwuifySentence(sentence)
   );
-  expect(transformedWords).toEqual(uwuifiedSentences);
+  assertEquals(transformedSentences, uwuifiedSentences);
 });
 
-test("Check consistency of number generator", () => {
+Deno.test("Check consistency of number generator", () => {
   const firstSample = new Seed("test").random();
   const secondSample = new Seed("test").random();
-  expect(firstSample).toEqual(secondSample);
+  assertEquals(firstSample, secondSample);
 });
