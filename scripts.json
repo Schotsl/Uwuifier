@@ -23,14 +23,14 @@
     },
     "compile": {
       "cmd": "deno compile --target=x86_64-unknown-linux-gnu index.ts",
-      "desc": "Compile Uwuifier"
+      "desc": "Compile Uwuifier",
+      "allow": {
+        "run": "npm",
+        "env": "HOME,DENO_AUTH_TOKENS,DENO_DIR",
+        "read": true,
+        "write": true
+      }
     }
-  },
-  "allow": {
-    "run": "npm",
-    "env": "HOME,DENO_AUTH_TOKENS,DENO_DIR",
-    "read": true,
-    "write": true
   },
   "logger": {
     "quiet": true,
