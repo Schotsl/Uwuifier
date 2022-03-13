@@ -61,7 +61,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Building package
-        run: deno run --allow-run=npm --allow-env=HOME,DENO_AUTH_TOKENS,DENO_DIR --allow-read --allow-write build.ts
+        run: deno run --allow-run=npm --allow-env=HOME,DENO_AUTH_TOKENS,DENO_DIR,XDG_CACHE_HOME --allow-read --allow-write build.ts
 
       # - name: Publishing to NPM
       #   run: cd dist && npm publish
