@@ -9,7 +9,7 @@ This lightweight package allows you to uwuify any sentence or word (excluding UR
 
 This package uses a seeded random generator to ensure all results will be the same, this package also analyses the casing of every sentence to ensure letter casing will still look correct even when the string is uwuified. If you've got any more suggestions on how to improve this package, please create an issue on our GitHub page!
 
-This repository contains the Uwuifier Deno package! It's made for Deno which means it's written in TypeScript, the package also makes use of the build-in Deno testing.
+This repository contains the Uwuifier package! It's written in Deno with TypeScript and compiled into JavaScript for NPM, makes use of Jest for testing the code and is deployed on NPM and https://deno.land.
 
 &nbsp;
 
