@@ -8,7 +8,7 @@ await build({
     name: "uwuifier",
     author: "Sjors van Holst",
     license: "MIT",
-    version: "4.0.5",
+    version: "4.0.6",
     homepage: "https://uwuifier.com",
     repository: "git://github.com/Schotsl/Uwuifier.git",
     description:
