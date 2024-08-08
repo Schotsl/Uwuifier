@@ -34,9 +34,17 @@ export function InitModifierParam() {
     const setter = (next: number | Record<string, number>) => {
       if (typeof next === "object") {
         sum = Object.values(next).reduce((a, b) => a + b);
+
+        if (sum < 0 || sum > 1) {
+          throw new Error(
+            `${key} modifier value must be a number between 0 and 1`,
+          );
+        }
+
+        return;
       }
 
-      if (next < 0 || sum < 0 || next > 1 || sum > 1) {
+      if (next < 0 || next > 1) {
         throw new Error(
           `${key} modifier value must be a number between 0 and 1`,
         );
@@ -58,16 +66,12 @@ export function isUri(value: string): boolean {
   if (!value) return false;
 
   // Check for illegal characters
-  if (
-    /[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)
-  ) {
+  if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)) {
     return false;
   }
 
   // Check for hex escapes that aren't complete
-  if (
-    /%[^0-9a-f]/i.test(value) || /%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)
-  ) {
+  if (/%[^0-9a-f]/i.test(value) || /%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)) {
     return false;
   }
 
