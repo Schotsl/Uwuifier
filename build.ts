@@ -1,5 +1,6 @@
-import { build } from "https://deno.land/x/dnt@0.22.0/mod.ts";
+import { build, emptyDir } from "https://deno.land/x/dnt@0.40.0/mod.ts";
 
+await emptyDir("./npm");
 await build({
   shims: {
     deno: true,
@@ -8,7 +9,7 @@ await build({
     name: "uwuifier",
     author: "Sjors van Holst",
     license: "MIT",
-    version: "4.0.6",
+    version: "4.1.0",
     homepage: "https://uwuifier.com",
     repository: "git://github.com/Schotsl/Uwuifier.git",
     description:
