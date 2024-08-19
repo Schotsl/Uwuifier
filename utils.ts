@@ -1,13 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
-
-function isLetter(char: string) {
-  return /^\p{L}/u.test(char);
-}
-
-function isUpperCase(char: string) {
-  return char === char.toUpperCase();
-}
-
 export function getCapitalPercentage(str: string): number {
   let totalLetters = 0;
   let upperLetters = 0;
@@ -25,41 +15,18 @@ export function getCapitalPercentage(str: string): number {
   return upperLetters / totalLetters;
 }
 
-export function InitModifierParam() {
-  return (target: { [key: string]: any }, key: string): void => {
-    let value = target[key];
-    let sum = 0;
+function isLetter(char: string) {
+  return /^\p{L}/u.test(char);
+}
 
-    const getter = () => value;
-    const setter = (next: number | Record<string, number>) => {
-      if (typeof next === "object") {
-        sum = Object.values(next).reduce((a, b) => a + b);
+function isUpperCase(char: string) {
+  return char === char.toUpperCase();
+}
 
-        if (sum < 0 || sum > 1) {
-          throw new Error(
-            `${key} modifier value must be a number between 0 and 1`,
-          );
-        }
-
-        return;
-      }
-
-      if (next < 0 || next > 1) {
-        throw new Error(
-          `${key} modifier value must be a number between 0 and 1`,
-        );
-      }
-
-      value = next;
-    };
-
-    Object.defineProperty(target, key, {
-      get: getter,
-      set: setter,
-      enumerable: true,
-      configurable: true,
-    });
-  };
+export function isAt(value: string): boolean {
+  // Check if the first character is '@'
+  const first = value.charAt(0);
+  return first === "@";
 }
 
 export function isUri(value: string): boolean {
@@ -77,7 +44,7 @@ export function isUri(value: string): boolean {
 
   // Directly from RFC 3986
   const split = value.match(
-    /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/,
+    /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/
   );
 
   if (!split) return false;
@@ -99,10 +66,4 @@ export function isUri(value: string): boolean {
   if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase())) return false;
 
   return true;
-}
-
-export function isAt(value: string): boolean {
-  // Check if the first character is '@'
-  const first = value.charAt(0);
-  return first === "@";
 }
