@@ -1,7 +1,7 @@
-import { assertEquals } from "https://deno.land/std@0.224.0/testing/asserts.ts";
-
 import Seed from "./seed.ts";
 import Uwuifier from "./index.ts";
+
+import { assertEquals } from "./utils.ts";
 
 const uwuifier = new Uwuifier({
   spaces: { faces: 0.3, actions: 0.05, stutters: 0.1 },
@@ -27,7 +27,7 @@ const uwuifiedSentences = [
   "wow UwU you'we owd as fuck, UwU you'we basicawwy :3 my gwandpa you knyow! UwU",
 ];
 
-const OriginalWords = [
+const originalWords = [
   "Stabbed",
   "Tonight",
   "Through",
@@ -35,6 +35,7 @@ const OriginalWords = [
   "Netherlands",
   "Grandpa",
 ];
+
 const uwuifiedWords = [
   "Stabbed",
   "Tonyight",
@@ -45,9 +46,10 @@ const uwuifiedWords = [
 ];
 
 Deno.test(`Uwufy words & check for inconsistency`, () => {
-  const transformedWords = OriginalWords.map((word) =>
+  const transformedWords = originalWords.map((word) =>
     uwuifier.uwuifyWords(word)
   );
+
   assertEquals(transformedWords, uwuifiedWords);
 });
 
@@ -55,11 +57,13 @@ Deno.test("Uwufy sentences & check for inconsistency", () => {
   const transformedSentences = originalSentences.map((sentence) =>
     uwuifier.uwuifySentence(sentence)
   );
+
   assertEquals(transformedSentences, uwuifiedSentences);
 });
 
 Deno.test("Check consistency of number generator", () => {
   const firstSample = new Seed("test").random();
   const secondSample = new Seed("test").random();
+
   assertEquals(firstSample, secondSample);
 });

@@ -1,5 +1,14 @@
 {
   "name": "@schotsl/uwuifier",
-  "version": "4.1.0",
-  "exports": "./index.ts"
+  "version": "4.1.1",
+  "exports": "./index.ts",
+  "imports": { "@deno/dnt": "jsr:@deno/dnt@^0.41.3" },
+  "exclude": ["npm"],
+  "tasks": {
+    "lint": "deno lint",
+    "test": "deno test test.ts",
+    "build": "deno run --allow-env --allow-read --allow-write --allow-net --allow-run build.ts",
+    "format": "deno fmt",
+    "format:check": "deno fmt --check"
+  }
 }

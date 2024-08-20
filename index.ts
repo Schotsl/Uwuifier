@@ -1,4 +1,5 @@
 import Seed from "./seed.ts";
+
 import { getCapitalPercentage, isAt, isUri } from "./utils.ts";
 
 interface SpacesModifier {
@@ -60,6 +61,13 @@ export default class Uwuifier {
   private _spacesModifier: SpacesModifier = DEFAULTS.SPACES;
   private _exclamationsModifier: number = DEFAULTS.EXCLAMATIONS;
 
+  /**
+   * Creates an instance of the Uwuifier class with customizable modifiers for words, spaces, and exclamations.
+   * @param {Object} [config] - Configuration object for the Uwuifier.
+   * @param {number} [config.words=DEFAULTS.WORDS] - The modifier for word transformations.
+   * @param {SpacesModifier} [config.spaces=DEFAULTS.SPACES] - The modifier for space transformations.
+   * @param {number} [config.exclamations=DEFAULTS.EXCLAMATIONS] - The modifier for exclamation transformations.
+   */
   constructor(
     {
       words = DEFAULTS.WORDS,
@@ -76,10 +84,19 @@ export default class Uwuifier {
     this.exclamationsModifier = exclamations;
   }
 
+  /**
+   * Gets the current word modifier value.
+   * @returns {number} The word modifier, a value between 0 and 1.
+   */
   public get wordsModifier(): number {
     return this._wordsModifier;
   }
 
+  /**
+   * Sets the word modifier value. Must be between 0 and 1.
+   * @param {number} value - The word modifier value.
+   * @throws Will throw an error if the value is not between 0 and 1.
+   */
   public set wordsModifier(value: number) {
     if (value < 0 || value > 1) {
       throw new Error("wordsModifier value must be a number between 0 and 1");
@@ -87,10 +104,19 @@ export default class Uwuifier {
     this._wordsModifier = value;
   }
 
+  /**
+   * Gets the current spaces modifier values.
+   * @returns {SpacesModifier} The current spaces modifier object.
+   */
   public get spacesModifier(): SpacesModifier {
     return this._spacesModifier;
   }
 
+  /**
+   * Sets the spaces modifier values. The sum of the values must be between 0 and 1.
+   * @param {SpacesModifier} value - The spaces modifier object.
+   * @throws Will throw an error if the sum of the values is not between 0 and 1.
+   */
   public set spacesModifier(value: SpacesModifier) {
     const sum = Object.values(value).reduce((a, b) => a + b);
     if (sum < 0 || sum > 1) {
@@ -99,10 +125,19 @@ export default class Uwuifier {
     this._spacesModifier = value;
   }
 
+  /**
+   * Gets the current exclamations modifier value.
+   * @returns {number} The exclamations modifier, a value between 0 and 1.
+   */
   public get exclamationsModifier(): number {
     return this._exclamationsModifier;
   }
 
+  /**
+   * Sets the exclamations modifier value. Must be between 0 and 1.
+   * @param {number} value - The exclamations modifier value.
+   * @throws Will throw an error if the value is not between 0 and 1.
+   */
   public set exclamationsModifier(value: number) {
     if (value < 0 || value > 1) {
       throw new Error(
@@ -112,6 +147,11 @@ export default class Uwuifier {
     this._exclamationsModifier = value;
   }
 
+  /**
+   * Transforms words in a sentence by applying the Uwuifier's word map transformations.
+   * @param {string} sentence - The sentence to be uwuified.
+   * @returns {string} The uwuified sentence with transformed words.
+   */
   public uwuifyWords(sentence: string): string {
     const words = sentence.split(" ");
 
@@ -136,6 +176,11 @@ export default class Uwuifier {
     return uwuifiedSentence;
   }
 
+  /**
+   * Transforms the spaces in a sentence by inserting random faces, actions, or stutters.
+   * @param {string} sentence - The sentence to be uwuified.
+   * @returns {string} The uwuified sentence with modified spaces.
+   */
   public uwuifySpaces(sentence: string): string {
     const words = sentence.split(" ");
 
@@ -194,6 +239,11 @@ export default class Uwuifier {
     return uwuifiedSentence;
   }
 
+  /**
+   * Transforms exclamations in a sentence by replacing them with random exclamation patterns.
+   * @param {string} sentence - The sentence to be uwuified.
+   * @returns {string} The uwuified sentence with modified exclamations.
+   */
   public uwuifyExclamations(sentence: string): string {
     const words = sentence.split(" ");
     const pattern = new RegExp("[?!]+$");
@@ -218,6 +268,11 @@ export default class Uwuifier {
     return uwuifiedSentence;
   }
 
+  /**
+   * 	Transforms a sentence by applying all uwuify transformations: words, spaces, and exclamations.
+   * 	@param {string} sentence - The sentence to be fully uwuified.
+   * 	@returns {string} The fully uwuified sentence.
+   */
   public uwuifySentence(sentence: string): string {
     let uwuifiedString = sentence;
 

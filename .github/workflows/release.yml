@@ -6,64 +6,45 @@ on:
       - published
 
 jobs:
-  quality:
-    name: Quality
+  publish-npm:
+    name: Publish NPM
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: vx.x.x
 
-      - name: Run Deno fmt
-        run: deno fmt --check **.ts
-
-      - name: Run Deno lint
-        run: deno lint **.ts
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v4
         with:
-          deno-version: v1.x
-
-      - name: Run Deno test
-        run: deno test index.ts
-
-  deploy:
-    name: NPM publish
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
-        with:
-          deno-version: v1.x
-
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20.x"
+          node-version: "latest"
           registry-url: "https://registry.npmjs.org"
 
       - name: Building package
-        run: deno run --allow-run=npm --allow-net=deno.land --allow-env=HOME,DENO_AUTH_TOKENS,DENO_DIR,XDG_CACHE_HOME --allow-read --allow-write build.ts
+        run: deno task build
 
       - name: Publishing to NPM
-        run: cd dist && npm publish
+        run: cd npm && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-jsr:
+    name: Publish JSR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup latest Deno version
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+
+      - name: Publishing to JSR
+        run: deno publish --token ${{ secrets.JSR_TOKEN }}

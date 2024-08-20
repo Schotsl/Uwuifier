@@ -44,7 +44,7 @@ export const isUri = (value: string): boolean => {
 
   // Directly from RFC 3986
   const split = value.match(
-    /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/
+    /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/,
   );
 
   if (!split) return false;

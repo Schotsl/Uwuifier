@@ -12,18 +12,18 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: vx.x.x
 
-      - name: Run Deno fmt
-        run: deno fmt --check **.ts
+      - name: Check formatting with Deno
+        run: deno task format:check
 
-      - name: Run Deno lint
-        run: deno lint **.ts
+      - name: Check linting with Deno
+        run: deno task lint
 
   test:
     name: Test
@@ -31,12 +31,12 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: vx.x.x
 
       - name: Run Deno test
-        run: deno test index.ts
+        run: deno task test
