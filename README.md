@@ -4,7 +4,7 @@
 
 [![JSR](https://jsr.io/badges/@schotsl/uwuifier)](https://jsr.io/@schotsl/uwuifier)
 
-[![npm version](https://badge.fury.io/js/uwuifier.svg)](https://badge.fury.io/js/uwuifier)
+[![NPM](https://badge.fury.io/js/uwuifier.svg)](https://badge.fury.io/js/uwuifier)
 
 # Uwuifier
 
