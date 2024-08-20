@@ -2,9 +2,14 @@
     <img src="./logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
-[![JSR](https://jsr.io/badges/@schotsl/uwuifier)](https://jsr.io/@schotsl/uwuifier)
-
-[![npm version](https://badge.fury.io/js/uwuifier.svg)](https://badge.fury.io/js/uwuifier)
+<div style="display: flex; gap: 1rem; align-items: center;">
+    <a href="https://badge.fury.io/js/uwuifier">
+        <img src="https://badge.fury.io/js/uwuifier.svg" alt="npm version badge" />
+    </a>
+    <a href="https://jsr.io/@schotsl/uwuifier">
+        <img src="https://jsr.io/badges/@schotsl/uwuifier" alt="JSR badge" />
+    </a>
+</div>
 
 # Uwuifier
 
@@ -59,13 +64,13 @@ the code and is deployed on NPM and https://deno.land.
 If you are using NPM (Node.js), follow these steps to install and use the
 Uwuifier package:
 
-### 1. Install package using NPM:
+### Install package using NPM:
 
 ```bash
 npm install uwuifier
 ```
 
-### 2. Import and use the Uwuifier package in your Node.js project:
+### Import and use the Uwuifier package in your Node.js project:
 
 ```typescript
 import Uwuifier from "uwuifier";
