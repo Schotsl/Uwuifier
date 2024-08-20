@@ -1,4 +1,18 @@
-export function getCapitalPercentage(str: string): number {
+const isLetter = (char: string) => {
+  return /^\p{L}/u.test(char);
+};
+
+const isUpperCase = (char: string) => {
+  return char === char.toUpperCase();
+};
+
+export const isAt = (value: string): boolean => {
+  // Check if the first character is '@'
+  const first = value.charAt(0);
+  return first === "@";
+};
+
+export const getCapitalPercentage = (str: string): number => {
   let totalLetters = 0;
   let upperLetters = 0;
 
@@ -13,23 +27,9 @@ export function getCapitalPercentage(str: string): number {
   }
 
   return upperLetters / totalLetters;
-}
+};
 
-function isLetter(char: string) {
-  return /^\p{L}/u.test(char);
-}
-
-function isUpperCase(char: string) {
-  return char === char.toUpperCase();
-}
-
-export function isAt(value: string): boolean {
-  // Check if the first character is '@'
-  const first = value.charAt(0);
-  return first === "@";
-}
-
-export function isUri(value: string): boolean {
+export const isUri = (value: string): boolean => {
   if (!value) return false;
 
   // Check for illegal characters
@@ -66,4 +66,13 @@ export function isUri(value: string): boolean {
   if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase())) return false;
 
   return true;
-}
+};
+
+export const assertEquals = (first: unknown, second: unknown): void => {
+  const firstString = JSON.stringify(first);
+  const secondString = JSON.stringify(second);
+
+  if (firstString !== secondString) {
+    throw new Error(`Expected ${firstString} to equal ${secondString}`);
+  }
+};
