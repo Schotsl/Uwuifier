@@ -1,6 +1,6 @@
 {
   "name": "@schotsl/uwuifier",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "exports": "./index.ts",
   "imports": { "@deno/dnt": "jsr:@deno/dnt@^0.41.3" },
   "exclude": ["npm"],
