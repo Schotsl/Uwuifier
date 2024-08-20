@@ -56,7 +56,8 @@ the code and is deployed on NPM and https://deno.land.
 
 ## NPM (Node.js)
 
-If you are using NPM (Node.js), follow these steps to install and use the Uwuifier package:
+If you are using NPM (Node.js), follow these steps to install and use the
+Uwuifier package:
 
 ### 1. Install package using NPM:
 
