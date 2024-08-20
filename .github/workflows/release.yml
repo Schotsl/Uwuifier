@@ -6,8 +6,46 @@ on:
       - published
 
 jobs:
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup latest Deno version
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+
+      - name: Check formatting with Deno
+        run: deno task format:check
+
+      - name: Check linting with Deno
+        run: deno task lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup latest Deno version
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+
+      - name: Run Deno test
+        run: deno task test
+
   publish-npm:
     name: Publish NPM
+    needs:
+      - quality
+      - test
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +73,9 @@ jobs:
 
   publish-jsr:
     name: Publish JSR
+    needs:
+      - quality
+      - test
     runs-on: ubuntu-latest
     permissions:
       contents: read
