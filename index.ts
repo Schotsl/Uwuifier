@@ -8,8 +8,8 @@ interface SpacesModifier {
 }
 
 export const DEFAULTS = {
-  WORDS: 1,
-  SPACES: { faces: 0.05, actions: 0.075, stutters: 0.1 },
+  WORDS: 0.9,
+  SPACES: { faces: 0.04, actions: 0.03, stutters: 0.1 },
   EXCLAMATIONS: 1,
 };
 
