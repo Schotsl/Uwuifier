@@ -36,15 +36,13 @@ jobs:
   publish-jsr:
     name: Publish JSR
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: Setup latest Deno version
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: vx.x.x
-
       - name: Publishing to JSR
-        run: deno publish --token ${{ secrets.JSR_TOKEN }}
+        run: npx jsr publish
