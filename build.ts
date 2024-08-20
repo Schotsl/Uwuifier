@@ -11,7 +11,7 @@ await build({
     name: "uwuifier",
     author: "Sjors van Holst",
     license: "MIT",
-    version: "4.1.1",
+    version: "4.2.0",
     homepage: "https://uwuifier.com",
     description:
       `Uwuifier is a lightweight package that allows you to uwuify any words or sentences (excluding URL's) with many configurable parameters!`,
