@@ -82,7 +82,7 @@ started!
 
 ```typescript
 // Import the Uwuifier package
-import Uwuifier from "https://deno.land/x/uwuifier/index.ts";
+import Uwuifier from "https://deno.land/x/uwuifier@v4.2.1/index.ts";
 
 // Create a "Uwuifier" instance
 const uwuifier = new Uwuifier();
