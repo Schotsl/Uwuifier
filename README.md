@@ -2,6 +2,10 @@
     <img src="./logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
+[![JSR](https://jsr.io/badges/@schotsl/uwuifier)](https://jsr.io/@schotsl/uwuifier)
+
+[![npm version](https://badge.fury.io/js/uwuifier.svg)](https://badge.fury.io/js/uwuifier)
+
 # Uwuifier
 
 This lightweight package allows you to uwuify any sentence or word (excluding
@@ -50,6 +54,26 @@ the code and is deployed on NPM and https://deno.land.
 
 # Quick start
 
+## NPM (Node.js)
+
+If you are using NPM (Node.js), follow these steps to install and use the Uwuifier package:
+
+### 1. Install package using NPM:
+
+```bash
+npm install uwuifier
+```
+
+### 2. Import and use the Uwuifier package in your Node.js project:
+
+```typescript
+import Uwuifier from "uwuifier";
+
+const uwuifier = new Uwuifier();
+
+console.log(uwuifier.uwuifySentence("This package is amazing!"));
+```
+
 ## Deno
 
 Since Deno uses URL based imports we don't need to install anything to get
@@ -57,12 +81,12 @@ started!
 
 ```typescript
 // Import the Uwuifier package
-import Uwuifier from "https://deno.land/x/uwuifier/src/index.ts";
+import Uwuifier from "https://deno.land/x/uwuifier/index.ts";
 
 // Create a "Uwuifier" instance
 const uwuifier = new Uwuifier();
 
-// Uwuifiy a sentence
+// Uwuify a sentence
 console.log(uwuifier.uwuifySentence("This package is amazing!"));
 ```
 
