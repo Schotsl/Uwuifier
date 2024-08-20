@@ -4,7 +4,7 @@
 
 <div style="display: flex; gap: 1rem; align-items: center; margin: 0 0 1rem;">
     <a href="https://badge.fury.io/js/uwuifier">
-        <img src="https://badge.fury.io/js/uwuifier.svg" alt="npm version badge" />
+        <img src="https://badge.fury.io/js/uwuifier.svg" alt="NPM badge" />
     </a>
     <a href="https://jsr.io/@schotsl/uwuifier">
         <img src="https://jsr.io/badges/@schotsl/uwuifier" alt="JSR badge" />
