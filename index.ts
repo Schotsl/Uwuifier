@@ -1,6 +1,5 @@
 import Seed from "./seed.ts";
-
-import { getCapitalPercentage, isAt, isUri } from "./utils.ts";
+import { getCapitalPercentage, isAt, isBreak, isUri } from "./utils.ts";
 
 interface SpacesModifier {
   faces: number;
@@ -195,16 +194,24 @@ export default class Uwuifier {
 
         const [firstCharacter] = word;
 
-        if (random <= faceThreshold && this.faces) {
+        if (random <= faceThreshold && this.faces && !isBreak(word)) {
           // Add random face before the word
           word += " " + this.faces[seed.randomInt(0, this.faces.length - 1)];
           checkCapital();
-        } else if (random <= actionThreshold && this.actions) {
+        } else if (
+          random <= actionThreshold &&
+          this.actions &&
+          !isBreak(word)
+        ) {
           // Add random action before the word
           word += " " +
             this.actions[seed.randomInt(0, this.actions.length - 1)];
           checkCapital();
-        } else if (random <= stutterThreshold && !isUri(word)) {
+        } else if (
+          random <= stutterThreshold &&
+          !isUri(word) &&
+          !isBreak(word)
+        ) {
           // Add stutter with a length between 0 and 2
           const stutter = seed.randomInt(0, 2);
           return (firstCharacter + "-").repeat(stutter) + word;
@@ -253,7 +260,11 @@ export default class Uwuifier {
         const seed = new Seed(word);
 
         // If there are no exclamations return
-        if (!pattern.test(word) || seed.random() > this._exclamationsModifier) {
+        if (
+          !pattern.test(word) ||
+          seed.random() > this._exclamationsModifier ||
+          isBreak(word)
+        ) {
           return word;
         }
 

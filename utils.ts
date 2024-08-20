@@ -68,6 +68,10 @@ export const isUri = (value: string): boolean => {
   return true;
 };
 
+export const isBreak = (word: string): boolean => {
+  return word.trim() === "";
+};
+
 export const assertEquals = (first: unknown, second: unknown): void => {
   const firstString = JSON.stringify(first);
   const secondString = JSON.stringify(second);
