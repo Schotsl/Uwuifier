@@ -2,9 +2,14 @@
     <img src="./logo-large.png" alt="Uwuifier logo" title="Uwuifier" align="right" height="60" />
 </a>
 
-[![JSR](https://jsr.io/badges/@schotsl/uwuifier)](https://jsr.io/@schotsl/uwuifier)
-
-[![NPM](https://badge.fury.io/js/uwuifier.svg)](https://badge.fury.io/js/uwuifier)
+<div style="display: flex; gap: 1rem; align-items: center; margin: 0 0 1rem;">
+    <a href="https://badge.fury.io/js/uwuifier">
+        <img src="https://badge.fury.io/js/uwuifier.svg" alt="npm version badge" />
+    </a>
+    <a href="https://jsr.io/@schotsl/uwuifier">
+        <img src="https://jsr.io/badges/@schotsl/uwuifier" alt="JSR badge" />
+    </a>
+</div>
 
 # Uwuifier
 
@@ -22,8 +27,6 @@ This repository contains the Uwuifier package! It's written in Deno with
 TypeScript and compiled into JavaScript for NPM, makes use of Jest for testing
 the code and is deployed on NPM and https://deno.land.
 
-&nbsp;
-
 # Table of content
 
 - [Example](#example)
@@ -31,8 +34,6 @@ the code and is deployed on NPM and https://deno.land.
 - [Constructor](#constructor)
 - [Functions](#functions)
 - [License](#license)
-
-&nbsp;
 
 # Example
 
@@ -45,12 +46,11 @@ the code and is deployed on NPM and https://deno.land.
 
 ### Very kawaii text:
 
-> This vewy wightweight package a-awwows you t-to owo uwuify ;;w;; any sentence
-> (・\`ω´・) ow wowd (excwuding UWW's) with many configuwabwe pawametews whiwe
-> giving access t-to many vewy kawaii sentences and faces!!11 This test sentence
-> demonstwates x3 the capabiwities of x3 the uwuifiew \*sweats\* package.
-
-&nbsp;
+> This wightweight package a-a-awwows you to uwuify OwO any OwO sentence ow
+> \*whispers to self\* wowd (excwuding UWW's) with many configuwabwe pawametews
+> whiwe giving access to many vewy kawaii sentences and faces?!?1 This test
+> sentence demonstwates the \*boops your nose\* capabiwities of the \*boops your
+> nose\* uwuifiew package. \*sweats\*
 
 # Quick start
 
@@ -59,13 +59,13 @@ the code and is deployed on NPM and https://deno.land.
 If you are using NPM (Node.js), follow these steps to install and use the
 Uwuifier package:
 
-### 1. Install package using NPM:
+### Install package using NPM:
 
 ```bash
 npm install uwuifier
 ```
 
-### 2. Import and use the Uwuifier package in your Node.js project:
+### Import and use the Uwuifier package in your Node.js project:
 
 ```typescript
 import Uwuifier from "uwuifier";
@@ -90,8 +90,6 @@ const uwuifier = new Uwuifier();
 // Uwuify a sentence
 console.log(uwuifier.uwuifySentence("This package is amazing!"));
 ```
-
-&nbsp;
 
 # Constructor
 
@@ -139,8 +137,6 @@ be noted that the default actions, faces, and exclamations can be modified by
 accessing and changing the public properties `actions`, `faces`, and
 `exclamations`.
 
-&nbsp;
-
 # Functions
 
 **Warning**: All functions besides the default `uwuifySentence` function
@@ -166,8 +162,6 @@ your weeaboo journey.
 > _sees buldge_ the wandom sentence genyewatow g-genyewated a wandom sentence
 > about a wandom sentence?!!
 
-&nbsp;
-
 ### `uwuifyWords(string)`
 
 The `uwuifyWords` function only runs a Regex on certain characters, by lowering
@@ -184,8 +178,6 @@ characters to be modified.
 
 > The wandom sentence genyewatow genyewated a wandom sentence about a wandom
 > sentence!
-
-&nbsp;
 
 ### `uwuifySpaces(string)`
 
@@ -205,8 +197,6 @@ and exclamations can be modified by accessing and changing the public properties
 > _sees buldge_ the :3 random sentence generator g-generated a :3 random
 > sentence about a :3 random sentence!
 
-&nbsp;
-
 ### `uwuifyExclamations(string)`
 
 The `uwuifyExclamations` function only replaces exclamations with more
@@ -224,8 +214,6 @@ and exclamations can be modified by accessing and changing the public properties
 > The random sentence generator generated a random sentence about a random
 > sentence?!!
 
-&nbsp;
-
 # Acknowledgement
 
 I was inspired to write this god awful package by
@@ -234,8 +222,6 @@ it appears he got most of the Regex from the OwO Google Chrome extension made by
 leafysweetsgarden, I would include a link but the page is offline. So short
 story short: I'd like to give a big thanks to leafysweetsgarden for the Regex
 and the inspiration!
-
-&nbsp;
 
 # License
 
