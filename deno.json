@@ -2,7 +2,10 @@
   "name": "@schotsl/uwuifier",
   "version": "4.2.2",
   "exports": "./index.ts",
-  "imports": { "@deno/dnt": "jsr:@deno/dnt@^0.41.3" },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+    "@std/assert": "jsr:@std/assert@^1.0.6"
+  },
   "exclude": ["npm"],
   "tasks": {
     "lint": "deno lint",

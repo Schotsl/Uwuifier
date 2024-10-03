@@ -1,7 +1,7 @@
 import Seed from "./seed.ts";
 import Uwuifier from "./index.ts";
 
-import { assertEquals } from "./utils.ts";
+import { assertEquals } from "jsr:@std/assert";
 
 const uwuifier = new Uwuifier({
   spaces: { faces: 0.3, actions: 0.05, stutters: 0.1 },
