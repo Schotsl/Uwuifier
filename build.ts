@@ -22,6 +22,8 @@ await build({
     bugs: {
       url: "https://github.com/Schotsl/Uwuifier/issues",
     },
+    // Less then ideal but I couldn't get JSR to work in Node while using dnt
+    test: false,
   },
   postBuild() {
     Deno.copyFileSync("README.md", "npm/README.md");
